@@ -37,10 +37,10 @@ export function PageIntro() {
   root.classList.remove("intro-done");
   var prev=document.body.style.overflow;
   document.body.style.overflow="hidden";
-  var leave=1100, done=1550;
+  var leave=550, done=950;
   try{
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-      leave=700; done=1050;
+      leave=300; done=550;
     }
   }catch(e){}
   setTimeout(function(){ el.classList.add("is-leaving"); }, leave);
