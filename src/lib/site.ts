@@ -10,7 +10,8 @@ export const site = {
   description:
     "CODEXIA convierte ideas en productos digitales: landing pages, apps, automatizaciones y asesorías tecnológicas para negocios.",
   locale: "es_PE",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000",
   email: "oscarmg4501@gmail.com",
   phoneDisplay: "+51 981 474 747",
   whatsapp: {
