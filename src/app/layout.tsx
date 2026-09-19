@@ -101,6 +101,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="font-sans antialiased">
+        <PageIntro />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -111,13 +112,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Saltar al contenido
         </a>
-        <PageIntro />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},3200);",
-          }}
-        />
         {children}
       </body>
     </html>
