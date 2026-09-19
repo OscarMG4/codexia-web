@@ -1,5 +1,19 @@
+const DEFAULT_URL = "http://localhost:3000";
+
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return DEFAULT_URL;
+  const withProtocol = /^https?:\/\//.test(raw) ? raw : `https://${raw}`;
+  return withProtocol.replace(/\/$/, "");
+}
+
+export function absoluteUrl(path = "/"): string {
+  return new URL(path, resolveSiteUrl()).toString();
+}
+
 export const site = {
   name: "CODEXIA",
+  title: "CODEXIA | Convierte tus ideas en productos digitales",
   tagline: "IDEAS + CÓDIGO = SOLUCIONES",
   headline: "Convierte tus ideas en productos digitales.",
   headlineAccent: "productos digitales.",
@@ -8,17 +22,30 @@ export const site = {
   heroLead:
     "Te acompaño desde la idea hasta el producto publicado: con alcance claro, cotización formal y desarrollo a medida.",
   description:
-    "CODEXIA convierte ideas en productos digitales: landing pages, apps, automatizaciones y asesorías tecnológicas para negocios.",
+    "CODEXIA convierte ideas en productos digitales: landing pages, apps, automatizaciones y asesorías tecnológicas para negocios en Perú.",
   locale: "es_PE",
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000",
+  lang: "es-PE",
+  url: resolveSiteUrl(),
   email: "oscarmg4501@gmail.com",
   phoneDisplay: "+51 981 474 747",
+  phoneE164: "+51981474747",
   whatsapp: {
     number: "51981474747",
     message:
       "Hola CODEXIA 👋 Estoy interesado en desarrollar un proyecto y me gustaría recibir más información.",
   },
+  keywords: [
+    "CODEXIA",
+    "desarrollo web Perú",
+    "landing pages",
+    "apps web",
+    "apps mobile",
+    "automatizaciones",
+    "asesoría tecnológica",
+    "productos digitales",
+    "desarrollo a medida",
+    "Next.js Perú",
+  ],
   nav: [
     { href: "#inicio", label: "Inicio" },
     { href: "#servicios", label: "Servicios" },
@@ -27,6 +54,8 @@ export const site = {
   ],
   cta: "Servicios",
   avatar: "/brand/oscar-avatar.jpg",
+  logo: "/brand/codexia-mark.png",
+  ogImage: "/opengraph-image",
 } as const;
 
 export const services = [

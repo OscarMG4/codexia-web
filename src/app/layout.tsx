@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Syne } from "next/font/google";
 import { PageIntro } from "@/components/brand/PageIntro";
-import { site } from "@/lib/site";
+import {
+  organizationSchema,
+  webPageSchema,
+  websiteSchema,
+} from "@/lib/schema";
+import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -17,70 +22,76 @@ const syne = Syne({
   display: "swap",
 });
 
+const ogImage = {
+  url: absoluteUrl(site.ogImage),
+  width: 1200,
+  height: 630,
+  alt: site.title,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "CODEXIA | Convierte tus ideas en productos digitales",
-    template: "%s | CODEXIA",
+    default: site.title,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
-  keywords: [
-    "CODEXIA",
-    "desarrollo web",
-    "landing pages",
-    "apps mobile",
-    "automatizaciones",
-    "asesoría tecnológica",
-    "productos digitales",
-    "Perú",
-  ],
-  authors: [{ name: "CODEXIA", url: site.url }],
-  creator: "CODEXIA",
-  applicationName: "CODEXIA",
+  keywords: [...site.keywords],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  applicationName: site.name,
+  category: "technology",
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
   openGraph: {
     type: "website",
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: "CODEXIA | Convierte tus ideas en productos digitales",
-    description: site.proposition,
+    title: site.title,
+    description: site.description,
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CODEXIA | Convierte tus ideas en productos digitales",
-    description: site.proposition,
+    title: site.title,
+    description: site.description,
+    images: [ogImage.url],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
-  category: "technology",
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  slogan: site.tagline,
-  description: site.description,
-  url: site.url,
-  email: site.email,
-  telephone: "+51981474747",
-  areaServed: "PE",
-  serviceType: [
-    "Landing Pages",
-    "Automatizaciones",
-    "Apps Web y Mobile",
-    "Asesorías Tecnológicas",
-  ],
+export const viewport: Viewport = {
+  themeColor: "#0b1224",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
+
+const jsonLd = [organizationSchema(), websiteSchema(), webPageSchema()];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${outfit.variable} ${syne.variable}`}>
+    <html lang={site.lang} className={`${outfit.variable} ${syne.variable}`}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
