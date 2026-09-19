@@ -74,7 +74,7 @@ export function Hero() {
           </p>
 
           <p
-            className="animate-rise mt-3 max-w-xl text-sm leading-relaxed text-fog sm:mt-4 sm:text-base xl:max-w-2xl"
+            className="animate-rise mt-3 hidden max-w-xl text-sm leading-relaxed text-fog sm:mt-4 sm:block sm:text-base xl:max-w-2xl"
             style={{ animationDelay: "400ms" }}
           >
             {site.heroLead}
@@ -89,29 +89,27 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Facts: scroll horizontal en mobile, grid en desktop */}
+          {/* Facts */}
           <div
-            className="animate-rise mt-6 -mx-4 sm:mx-0 sm:mt-8"
+            className="animate-rise mt-6 grid gap-2.5 sm:mt-8 sm:grid-cols-3 sm:gap-3"
             style={{ animationDelay: "620ms" }}
           >
-            <div className="flex gap-3 overflow-x-auto px-4 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0">
-              {heroFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="w-[78%] shrink-0 snap-start rounded-2xl border border-white/10 bg-panel/70 px-3.5 py-3.5 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:w-auto sm:bg-panel/55"
-                >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan">
-                    {fact.label}
-                  </p>
-                  <p className="mt-1.5 text-sm font-semibold text-snow">
-                    {fact.value}
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-mist">
-                    {fact.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {heroFacts.map((fact) => (
+              <div
+                key={fact.label}
+                className="rounded-2xl border border-white/10 bg-panel/70 px-3.5 py-3 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:bg-panel/55 sm:py-3.5"
+              >
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan">
+                  {fact.label}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-snow">
+                  {fact.value}
+                </p>
+                <p className="mt-1 hidden text-xs leading-relaxed text-mist sm:block">
+                  {fact.detail}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div

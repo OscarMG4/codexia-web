@@ -121,9 +121,10 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
 
   return (
     <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-3 sm:gap-4">
+      {/* Burbuja solo en desktop/tablet: en mobile tapa demasiado */}
       {bubbleVisible ? (
         <div
-          className={`whatsapp-bubble pointer-events-auto relative w-[min(17.5rem,calc(100vw-5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] sm:w-[min(19.5rem,calc(100vw-5.5rem))] ${
+          className={`whatsapp-bubble pointer-events-auto relative hidden w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] sm:block ${
             isLeaving ? "whatsapp-bubble-out" : "whatsapp-bubble-in"
           }`}
         >
@@ -193,7 +194,7 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
       <WhatsAppFab
         href={whatsappApiUrl()}
         className="sm:hidden"
-        showBadge={bubbleVisible && !isTyping}
+        showBadge={false}
       />
       <WhatsAppFab
         href={whatsappWebUrl()}

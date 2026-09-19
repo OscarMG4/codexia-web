@@ -78,8 +78,7 @@ export function Navbar() {
             className="relative min-w-0 shrink"
             aria-label="CODEXIA, ir al inicio"
           >
-            <Logo size={34} className="sm:hidden" priority />
-            <Logo size={42} className="hidden sm:inline-flex" priority />
+            <Logo size={38} priority />
           </a>
 
           <nav aria-label="Principal" className="hidden min-w-0 lg:block">
@@ -112,12 +111,14 @@ export function Navbar() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Button
-              href={`https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`}
-              className="hidden px-4 py-2 text-[13px] shadow-[0_0_24px_rgba(61,91,255,0.28)] lg:inline-flex xl:px-5 xl:py-2.5 xl:text-sm"
-            >
-              Hablemos
-            </Button>
+            <div className="hidden lg:block">
+              <Button
+                href={`https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`}
+                className="px-4 py-2 text-[13px] shadow-[0_0_24px_rgba(61,91,255,0.28)] xl:px-5 xl:py-2.5 xl:text-sm"
+              >
+                Hablemos
+              </Button>
+            </div>
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/12 bg-white/[0.04] text-snow transition-colors hover:border-volt/40 hover:bg-volt/10 lg:hidden"
