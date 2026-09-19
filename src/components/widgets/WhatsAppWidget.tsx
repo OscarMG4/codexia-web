@@ -11,8 +11,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DISMISS_KEY = "codexia-whatsapp-bubble-dismissed";
-const WIDGET_REVEAL_MS = 700;
-const BUBBLE_DELAY_MS = 1400;
+const WIDGET_REVEAL_MS = 120;
+const BUBBLE_DELAY_MS = 900;
 const TYPING_MS = 1200;
 const EXIT_MS = 220;
 
