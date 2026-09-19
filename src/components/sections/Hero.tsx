@@ -33,7 +33,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100svh] scroll-mt-20 flex-col overflow-hidden pt-[4.5rem] sm:scroll-mt-24 sm:pt-24"
+      className="relative flex min-h-[100svh] scroll-mt-20 flex-col overflow-hidden pt-16 sm:scroll-mt-24 sm:pt-24"
     >
       <AmbientBackground />
       <GridPattern />

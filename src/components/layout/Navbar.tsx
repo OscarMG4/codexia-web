@@ -72,13 +72,13 @@ export function Navbar() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-volt/70 to-cyan/40"
         />
 
-        <Container className="flex h-14 items-center justify-between gap-3 sm:h-[4.15rem] sm:gap-4 xl:h-[4.5rem]">
+        <Container className="flex h-16 items-center justify-between gap-3 sm:h-[4.25rem] sm:gap-4 xl:h-[4.5rem]">
           <a
             href="#inicio"
-            className="relative min-w-0 shrink"
+            className="relative flex h-full min-w-0 shrink items-center"
             aria-label="CODEXIA, ir al inicio"
           >
-            <Logo size={38} priority />
+            <Logo size={40} className="items-center leading-none" priority />
           </a>
 
           <nav aria-label="Principal" className="hidden min-w-0 lg:block">

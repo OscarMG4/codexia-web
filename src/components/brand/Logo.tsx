@@ -18,7 +18,7 @@ export function Logo({
   priority = false,
 }: LogoProps) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5 sm:gap-3", className)}>
+    <span className={cn("inline-flex items-center gap-2.5 leading-none sm:gap-3", className)}>
       <span
         className={cn(
           "relative inline-flex shrink-0 overflow-hidden rounded-full ring-1 ring-white/20 shadow-[0_0_22px_rgba(61,91,255,0.28)]",
