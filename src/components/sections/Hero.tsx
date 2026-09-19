@@ -19,15 +19,13 @@ export function Hero() {
     >
       <AmbientBackground />
       <GridPattern />
-      <div className="hidden sm:block">
-        <FloatingShapes />
-      </div>
+      <FloatingShapes />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute left-[14%] top-[18%] hidden h-48 w-px bg-gradient-to-b from-transparent via-volt/45 to-transparent xl:block" />
-        <div className="absolute right-[18%] top-[26%] hidden h-px w-36 bg-gradient-to-r from-transparent via-cyan/55 to-transparent xl:block" />
-        <div className="absolute bottom-[30%] left-[6%] hidden h-2.5 w-2.5 rounded-full bg-orchid/70 shadow-[0_0_20px_rgba(167,139,250,0.85)] lg:block" />
-        <div className="absolute right-[10%] top-[16%] hidden h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_16px_rgba(125,211,252,0.95)] xl:block" />
+        <div className="absolute left-[10%] top-[20%] h-28 w-px bg-gradient-to-b from-transparent via-volt/40 to-transparent sm:left-[14%] sm:top-[18%] sm:h-48 xl:via-volt/45" />
+        <div className="absolute right-[12%] top-[22%] h-px w-20 bg-gradient-to-r from-transparent via-cyan/50 to-transparent sm:right-[18%] sm:top-[26%] sm:w-36 xl:via-cyan/55" />
+        <div className="absolute bottom-[28%] left-[8%] h-2 w-2 rounded-full bg-orchid/70 shadow-[0_0_16px_rgba(167,139,250,0.85)] sm:bottom-[30%] sm:left-[6%] sm:h-2.5 sm:w-2.5" />
+        <div className="absolute right-[8%] top-[14%] h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_14px_rgba(125,211,252,0.95)] sm:right-[10%] sm:top-[16%]" />
       </div>
 
       <Container className="relative z-10 grid flex-1 items-center gap-7 pb-6 sm:gap-10 sm:pb-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pb-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16 xl:pb-14">
@@ -90,8 +88,8 @@ export function Hero() {
           className="animate-rise relative mt-1 sm:mt-0 lg:justify-self-end lg:w-full lg:max-w-[28rem] xl:max-w-none"
           style={{ animationDelay: "120ms" }}
         >
-          <div className="absolute -left-5 -top-6 hidden h-20 w-20 rounded-3xl border border-volt/45 bg-volt/20 shadow-[0_0_50px_rgba(61,91,255,0.4)] lg:block xl:-left-6 xl:-top-8 xl:h-24 xl:w-24" />
-          <div className="absolute -right-3 bottom-8 hidden h-14 w-14 rounded-full border border-cyan/40 bg-cyan/20 shadow-[0_0_40px_rgba(125,211,252,0.35)] lg:block xl:-right-4 xl:bottom-10 xl:h-16 xl:w-16" />
+          <div className="absolute -left-3 -top-3 h-12 w-12 rounded-2xl border border-volt/40 bg-volt/15 shadow-[0_0_36px_rgba(61,91,255,0.35)] sm:-left-4 sm:-top-4 sm:h-16 sm:w-16 sm:rounded-3xl lg:-left-5 lg:-top-6 lg:h-20 lg:w-20 lg:border-volt/45 lg:bg-volt/20 lg:shadow-[0_0_50px_rgba(61,91,255,0.4)] xl:-left-6 xl:-top-8 xl:h-24 xl:w-24" />
+          <div className="absolute -right-2 bottom-6 h-10 w-10 rounded-full border border-cyan/35 bg-cyan/15 shadow-[0_0_28px_rgba(125,211,252,0.3)] sm:-right-2.5 sm:bottom-7 sm:h-12 sm:w-12 lg:-right-3 lg:bottom-8 lg:h-14 lg:w-14 lg:border-cyan/40 lg:bg-cyan/20 lg:shadow-[0_0_40px_rgba(125,211,252,0.35)] xl:-right-4 xl:bottom-10 xl:h-16 xl:w-16" />
           <CodePanel />
         </div>
       </Container>

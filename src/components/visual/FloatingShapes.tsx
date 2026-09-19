@@ -1,8 +1,11 @@
 export function FloatingShapes() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+    >
       {/* Hexágono superior izquierda */}
-      <div className="animate-float-slow absolute left-[8%] top-[15%] h-20 w-20 opacity-70">
+      <div className="animate-float-slow absolute left-[6%] top-[12%] h-12 w-12 opacity-55 sm:left-[8%] sm:top-[15%] sm:h-20 sm:w-20 sm:opacity-70">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <polygon
             points="50 1 95 25 95 75 50 99 5 75 5 25"
@@ -21,7 +24,7 @@ export function FloatingShapes() {
       </div>
 
       {/* Círculo con anillo superior derecha */}
-      <div className="animate-float absolute right-[10%] top-[20%] h-24 w-24 opacity-60">
+      <div className="animate-float absolute right-[4%] top-[16%] h-14 w-14 opacity-50 sm:right-[10%] sm:top-[20%] sm:h-24 sm:w-24 sm:opacity-60">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <circle
             cx="50"
@@ -50,8 +53,8 @@ export function FloatingShapes() {
         </svg>
       </div>
 
-      {/* Triángulo inferior izquierda */}
-      <div className="animate-float-slow absolute bottom-[20%] left-[5%] h-16 w-16 opacity-50">
+      {/* Triángulo inferior izquierda — solo tablet+ */}
+      <div className="animate-float-slow absolute bottom-[20%] left-[5%] hidden h-16 w-16 opacity-50 sm:block">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <polygon
             points="50 10 90 90 10 90"
@@ -69,8 +72,8 @@ export function FloatingShapes() {
         </svg>
       </div>
 
-      {/* Cuadrado rotado centro derecha */}
-      <div className="animate-float absolute bottom-[35%] right-[8%] h-14 w-14 opacity-40 rotate-45">
+      {/* Cuadrado rotado — solo tablet+ */}
+      <div className="animate-float absolute bottom-[35%] right-[8%] hidden h-14 w-14 rotate-45 opacity-40 sm:block">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <rect
             x="10"

@@ -23,11 +23,11 @@ export function AmbientBackground() {
         <div className="absolute inset-0 hidden bg-gradient-to-t from-[#0b1224]/70 via-transparent to-[#0b1224]/30 lg:block" />
       </div>
 
-      <div className="animate-orb absolute -top-24 left-[8%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(61,91,255,0.22),transparent_68%)] blur-3xl" />
-      <div className="animate-orb-slow absolute top-16 right-[-6%] hidden h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.16),transparent_68%)] blur-3xl sm:block" />
+      <div className="animate-orb absolute -top-20 left-[-10%] h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(61,91,255,0.32),transparent_68%)] blur-3xl sm:-top-24 sm:left-[8%] sm:h-[28rem] sm:w-[28rem] sm:bg-[radial-gradient(circle,rgba(61,91,255,0.22),transparent_68%)]" />
+      <div className="animate-orb-slow absolute top-24 right-[-18%] h-[18rem] w-[18rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.26),transparent_68%)] blur-3xl sm:top-16 sm:right-[-6%] sm:h-[26rem] sm:w-[26rem] sm:bg-[radial-gradient(circle,rgba(167,139,250,0.16),transparent_68%)]" />
 
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent" />
-      <div className="noise absolute inset-0 opacity-[0.06] mix-blend-overlay sm:opacity-[0.08]" />
+      <div className="noise absolute inset-0 opacity-[0.07] mix-blend-overlay sm:opacity-[0.08]" />
     </div>
   );
 }

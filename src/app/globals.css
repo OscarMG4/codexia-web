@@ -361,6 +361,90 @@ html.intro-done .animate-drop {
   animation: widget-enter 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
+/* Mobile: motion más evidente (recorrido mayor, blur más corto) */
+@media (max-width: 639px) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translate3d(0, 48px, 0);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: none;
+    }
+  }
+
+  .animate-rise {
+    filter: blur(4px);
+    transform: translate3d(0, 48px, 0);
+  }
+
+  html.intro-done .animate-rise {
+    animation-duration: 0.95s;
+  }
+
+  .reveal {
+    --reveal-from: translate3d(0, 52px, 0);
+    filter: blur(4px);
+    transition-duration: 0.95s, 1.05s, 0.65s;
+  }
+
+  .reveal-up {
+    --reveal-from: translate3d(0, 52px, 0);
+  }
+
+  .reveal-left {
+    --reveal-from: translate3d(-28px, 28px, 0);
+  }
+
+  .reveal-right {
+    --reveal-from: translate3d(28px, 28px, 0);
+  }
+
+  .reveal-scale {
+    --reveal-from: translate3d(0, 40px, 0) scale(0.92);
+  }
+
+  .reveal-fade {
+    --reveal-from: translate3d(0, 28px, 0);
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(4deg);
+    }
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-18px) translateX(6px) rotate(-4deg);
+    }
+  }
+
+  .animate-float {
+    animation-duration: 5s;
+  }
+
+  .animate-float-slow {
+    animation-duration: 6.5s;
+  }
+
+  .animate-orb,
+  .animate-orb-slow {
+    animation-duration: 10s;
+  }
+}
+
 .page-intro {
   pointer-events: none;
   position: fixed;

@@ -74,8 +74,11 @@ export function Reveal({
     const isInView = () => {
       const rect = node.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      // Dispara un poco antes de que el elemento quede centrado
-      return rect.top < vh * 0.88 && rect.bottom > 40;
+      // En mobile dispara más tarde para que el movimiento se note al scrollear
+      const trigger = window.matchMedia("(max-width: 639px)").matches
+        ? vh * 0.78
+        : vh * 0.88;
+      return rect.top < trigger && rect.bottom > 40;
     };
 
     const onScroll = () => {
@@ -86,12 +89,16 @@ export function Reveal({
       await waitForIntroDone();
       if (cancelled || !node.isConnected) return;
 
+      const mobile = window.matchMedia("(max-width: 639px)").matches;
       observer = new IntersectionObserver(
         ([entry]) => {
           if (!entry.isIntersecting) return;
           reveal();
         },
-        { threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
+        {
+          threshold: mobile ? 0.12 : 0.08,
+          rootMargin: mobile ? "0px 0px -18% 0px" : "0px 0px -6% 0px",
+        },
       );
 
       observer.observe(node);

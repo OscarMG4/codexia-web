@@ -2,7 +2,7 @@ export function GridPattern() {
   return (
     <div 
       aria-hidden="true" 
-      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-20"
+      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-30 sm:opacity-20"
     >
       <svg className="absolute inset-0 h-full w-full">
         <defs>
