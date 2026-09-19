@@ -8,24 +8,6 @@ import { Marquee } from "@/components/visual/Marquee";
 import { site } from "@/lib/site";
 import Image from "next/image";
 
-const heroFacts = [
-  {
-    label: "Inicio",
-    value: "Conversación clara",
-    detail: "Entendemos el problema antes de proponer tecnología.",
-  },
-  {
-    label: "Acuerdo",
-    value: "Cotización y contrato",
-    detail: "Alcance, plazos e inversión definidos antes de construir.",
-  },
-  {
-    label: "Entrega",
-    value: "Producto publicado",
-    detail: "Lanzamiento acompañado y listo para iterar.",
-  },
-] as const;
-
 export function Hero() {
   const accent = site.headlineAccent;
   const titleStart = site.headline.replace(accent, "").trim();
@@ -89,32 +71,9 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Facts */}
-          <div
-            className="animate-rise mt-6 grid gap-2.5 sm:mt-8 sm:grid-cols-3 sm:gap-3"
-            style={{ animationDelay: "620ms" }}
-          >
-            {heroFacts.map((fact) => (
-              <div
-                key={fact.label}
-                className="rounded-2xl border border-white/10 bg-panel/70 px-3.5 py-3 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.18)] sm:bg-panel/55 sm:py-3.5"
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan">
-                  {fact.label}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-snow">
-                  {fact.value}
-                </p>
-                <p className="mt-1 hidden text-xs leading-relaxed text-mist sm:block">
-                  {fact.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-
           <div
             className="animate-rise mt-6 flex items-center gap-3 sm:mt-7"
-            style={{ animationDelay: "740ms" }}
+            style={{ animationDelay: "680ms" }}
           >
             <span className="relative inline-flex h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-volt/60 shadow-[0_0_32px_rgba(61,91,255,0.6)] sm:h-12 sm:w-12">
               <Image
