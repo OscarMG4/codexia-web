@@ -2,11 +2,10 @@
 
 import { CodexiaWordmark } from "@/components/brand/CodexiaWordmark";
 import { site } from "@/lib/site";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const INTRO_LEAVE_MS = 900;
-const INTRO_DONE_MS = 1400;
+const INTRO_LEAVE_MS = 1200;
+const INTRO_DONE_MS = 1700;
 
 export function PageIntro() {
   const [phase, setPhase] = useState<"show" | "leave" | "done">("show");
@@ -20,8 +19,8 @@ export function PageIntro() {
     document.body.style.overflow = "hidden";
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const leaveAt = reduced ? 400 : INTRO_LEAVE_MS;
-    const doneAt = reduced ? 700 : INTRO_DONE_MS;
+    const leaveAt = reduced ? 800 : INTRO_LEAVE_MS;
+    const doneAt = reduced ? 1200 : INTRO_DONE_MS;
 
     const leave = window.setTimeout(() => setPhase("leave"), leaveAt);
     const done = window.setTimeout(() => {
@@ -36,7 +35,6 @@ export function PageIntro() {
       window.clearTimeout(leave);
       window.clearTimeout(done);
       root.classList.remove("intro-active");
-      // Si se desmonta antes, no dejes la página bloqueada sin animaciones
       if (!root.classList.contains("intro-done")) {
         root.classList.add("intro-done");
       }
@@ -53,17 +51,20 @@ export function PageIntro() {
       <div className="page-intro-glow" />
       <span className="page-intro-line" />
       <div className="page-intro-mark">
-        <span className="relative mb-5 inline-flex h-28 w-28 overflow-hidden rounded-full ring-1 ring-white/30 shadow-[0_0_48px_rgba(61,91,255,0.45)] sm:h-36 sm:w-36">
-          <Image
+        <span className="page-intro-logo-ring">
+          {/* img nativo: visible al instante al cargar */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/brand/codexia-mark.jpg"
             alt={site.name}
-            fill
-            priority
-            sizes="144px"
-            className="scale-[1.42] object-cover object-center"
+            width={144}
+            height={144}
+            decoding="sync"
+            fetchPriority="high"
+            className="page-intro-logo-img"
           />
         </span>
-        <CodexiaWordmark className="text-[1.15rem] tracking-[0.3em] sm:text-[1.45rem] sm:tracking-[0.34em]" />
+        <CodexiaWordmark className="text-[1.2rem] tracking-[0.3em] sm:text-[1.5rem] sm:tracking-[0.34em]" />
       </div>
     </div>
   );

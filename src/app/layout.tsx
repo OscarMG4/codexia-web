@@ -92,6 +92,14 @@ const jsonLd = [organizationSchema(), websiteSchema(), webPageSchema()];
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang={site.lang} className={`${outfit.variable} ${syne.variable}`}>
+      <head>
+        <link
+          rel="preload"
+          href="/brand/codexia-mark.jpg"
+          as="image"
+          type="image/jpeg"
+        />
+      </head>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
@@ -107,7 +115,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},2800);",
+              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},3200);",
           }}
         />
         {children}
