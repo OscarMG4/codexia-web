@@ -34,7 +34,7 @@ export function Hero() {
         <div className="min-w-0">
           <p
             className="animate-rise mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-volt/35 bg-volt/15 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan shadow-[0_0_24px_rgba(61,91,255,0.25)] backdrop-blur-sm sm:mb-5 sm:gap-3 sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.28em]"
-            style={{ animationDelay: "80ms" }}
+            style={{ animationDelay: "40ms" }}
           >
             <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-cyan shadow-[0_0_8px_rgba(125,211,252,0.8)]" />
             <span className="truncate">{site.tagline}</span>
@@ -42,7 +42,7 @@ export function Hero() {
 
           <h1
             className="animate-rise font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[4.1rem] xl:text-[4.75rem] 2xl:text-[5.15rem]"
-            style={{ animationDelay: "200ms" }}
+            style={{ animationDelay: "90ms" }}
           >
             {titleStart}{" "}
             <span className="text-gradient">{accent}</span>
@@ -50,21 +50,21 @@ export function Hero() {
 
           <p
             className="animate-rise mt-4 max-w-xl text-[15px] leading-relaxed text-mist sm:mt-6 sm:text-lg xl:max-w-2xl xl:text-xl"
-            style={{ animationDelay: "320ms" }}
+            style={{ animationDelay: "140ms" }}
           >
             {site.proposition}
           </p>
 
           <p
             className="animate-rise mt-3 hidden max-w-xl text-sm leading-relaxed text-fog sm:mt-4 sm:block sm:text-base xl:max-w-2xl"
-            style={{ animationDelay: "400ms" }}
+            style={{ animationDelay: "180ms" }}
           >
             {site.heroLead}
           </p>
 
           <div
             className="animate-rise mt-6 sm:mt-8"
-            style={{ animationDelay: "520ms" }}
+            style={{ animationDelay: "220ms" }}
           >
             <Button href="#servicios" className="w-full sm:w-auto">
               {site.cta}
@@ -73,7 +73,7 @@ export function Hero() {
 
           <div
             className="animate-rise mt-6 flex items-center gap-3 sm:mt-7"
-            style={{ animationDelay: "680ms" }}
+            style={{ animationDelay: "280ms" }}
           >
             <span className="relative inline-flex h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-volt/60 shadow-[0_0_32px_rgba(61,91,255,0.6)] sm:h-12 sm:w-12">
               <Image
@@ -92,7 +92,7 @@ export function Hero() {
 
         <div
           className="animate-rise relative mt-2 sm:mt-0"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "120ms" }}
         >
           <div className="absolute -left-6 -top-8 hidden h-24 w-24 rounded-3xl border border-volt/45 bg-volt/20 shadow-[0_0_50px_rgba(61,91,255,0.4)] lg:block" />
           <div className="absolute -right-4 bottom-10 hidden h-16 w-16 rounded-full border border-cyan/40 bg-cyan/20 shadow-[0_0_40px_rgba(125,211,252,0.35)] lg:block" />
@@ -100,7 +100,7 @@ export function Hero() {
         </div>
       </Container>
 
-      <div className="animate-rise mt-2 sm:mt-0" style={{ animationDelay: "960ms" }}>
+      <div className="animate-rise mt-2 sm:mt-0" style={{ animationDelay: "320ms" }}>
         <Marquee />
       </div>
     </section>

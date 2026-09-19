@@ -107,7 +107,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},4500);",
+              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},2200);",
           }}
         />
         {children}

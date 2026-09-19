@@ -18,11 +18,11 @@ const EXIT_MS = 220;
 
 function WhatsAppFab({
   href,
-  className,
+  className = "",
   showBadge,
 }: {
   href: string;
-  className: string;
+  className?: string;
   showBadge: boolean;
 }) {
   return (
@@ -66,23 +66,24 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
         : whatsappWebUrl(),
     );
 
-    const section = document.getElementById(SERVICES_SECTION_ID);
-    if (!section) {
-      setIsVisible(true);
-      return;
-    }
+    const reveal = () => setIsVisible(true);
 
-    const hasReachedServices = () =>
-      section.getBoundingClientRect().top <= window.innerHeight * 0.36;
+    const section = document.getElementById(SERVICES_SECTION_ID);
+    const hasReachedServices = () => {
+      if (section) {
+        return section.getBoundingClientRect().top <= window.innerHeight * 0.72;
+      }
+      return window.scrollY > window.innerHeight * 0.28;
+    };
 
     if (hasReachedServices()) {
-      setIsVisible(true);
+      reveal();
       return;
     }
 
     const onScroll = () => {
       if (!hasReachedServices()) return;
-      setIsVisible(true);
+      reveal();
       window.removeEventListener("scroll", onScroll);
     };
 
@@ -121,10 +122,9 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
 
   return (
     <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-3 sm:gap-4">
-      {/* Burbuja solo en desktop/tablet: en mobile tapa demasiado */}
       {bubbleVisible ? (
         <div
-          className={`whatsapp-bubble pointer-events-auto relative hidden w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] sm:block ${
+          className={`whatsapp-bubble pointer-events-auto relative w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] ${
             isLeaving ? "whatsapp-bubble-out" : "whatsapp-bubble-in"
           }`}
         >
@@ -191,16 +191,7 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
         </div>
       ) : null}
 
-      <WhatsAppFab
-        href={whatsappApiUrl()}
-        className="sm:hidden"
-        showBadge={false}
-      />
-      <WhatsAppFab
-        href={whatsappWebUrl()}
-        className="hidden sm:flex"
-        showBadge={bubbleVisible && !isTyping}
-      />
+      <WhatsAppFab href={href} showBadge={bubbleVisible && !isTyping} />
     </div>
   );
 }

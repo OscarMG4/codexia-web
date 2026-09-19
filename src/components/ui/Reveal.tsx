@@ -40,7 +40,7 @@ function waitForIntroDone(): Promise<void> {
       window.clearInterval(poll);
       document.documentElement.classList.add("intro-done");
       resolve();
-    }, 5000);
+    }, 2500);
   });
 }
 

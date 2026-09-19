@@ -5,8 +5,8 @@ import { site } from "@/lib/site";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const INTRO_LEAVE_MS = 1100;
-const INTRO_DONE_MS = 2300;
+const INTRO_LEAVE_MS = 520;
+const INTRO_DONE_MS = 1100;
 
 export function PageIntro() {
   const [phase, setPhase] = useState<"show" | "leave" | "done">("show");
@@ -20,8 +20,8 @@ export function PageIntro() {
     document.body.style.overflow = "hidden";
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const leaveAt = reduced ? 700 : INTRO_LEAVE_MS;
-    const doneAt = reduced ? 1200 : INTRO_DONE_MS;
+    const leaveAt = reduced ? 280 : INTRO_LEAVE_MS;
+    const doneAt = reduced ? 520 : INTRO_DONE_MS;
 
     const leave = window.setTimeout(() => setPhase("leave"), leaveAt);
     const done = window.setTimeout(() => {
