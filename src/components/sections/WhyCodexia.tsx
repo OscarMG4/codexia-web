@@ -9,11 +9,11 @@ import Image from "next/image";
 
 export function WhyCodexia() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28">
+    <section className="relative overflow-hidden py-16 sm:py-28">
       <SectionFlair variant="why" />
 
       <Container className="relative">
-        <div className="grid items-start gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <div>
             <Reveal variant="left">
               <SectionHeading

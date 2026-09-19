@@ -9,7 +9,7 @@ export function Process() {
   return (
     <section
       id="proceso"
-      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-24 sm:py-28"
     >
       <SectionFlair variant="process" />
 
@@ -22,7 +22,7 @@ export function Process() {
           />
         </Reveal>
 
-        <ol className="relative mt-14 space-y-4 md:mt-16">
+        <ol className="relative mt-8 space-y-3 sm:mt-14 sm:space-y-4 md:mt-16">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {processSteps.map((step, index) => {
               const isHighlight = step.number === "04";

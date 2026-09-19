@@ -24,16 +24,16 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-4 flex w-fit items-center gap-2 rounded-full border border-volt/25 bg-volt/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan">
-          <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-cyan" />
+        <p className="mb-3 flex w-fit max-w-full items-center gap-2 rounded-full border border-volt/25 bg-volt/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan sm:mb-4 sm:text-[11px] sm:tracking-[0.24em]">
+          <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="font-display text-3xl font-bold tracking-tight text-snow sm:text-4xl lg:text-[2.9rem] lg:leading-[1.12]">
+      <h2 className="font-display text-[1.75rem] font-bold leading-tight tracking-tight text-snow sm:text-4xl lg:text-[2.9rem] lg:leading-[1.12]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-mist sm:text-lg">
+        <p className="mt-3 text-[15px] leading-relaxed text-mist sm:mt-4 sm:text-lg">
           {description}
         </p>
       ) : null}

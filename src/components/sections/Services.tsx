@@ -19,7 +19,7 @@ export function Services() {
   return (
     <section
       id="servicios"
-      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-24 sm:py-28"
     >
       <SectionFlair variant="services" />
 
@@ -32,7 +32,7 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-4 sm:mt-14 md:grid-cols-2 md:gap-5">
+        <div className="mt-8 grid gap-4 sm:mt-14 md:grid-cols-2 md:gap-5">
           {services.map((service, index) => {
             const number = String(index + 1).padStart(2, "0");
             const featured = index === 0 || index === 3;
@@ -80,7 +80,7 @@ export function Services() {
                     </div>
                   </div>
 
-                  <div className="relative flex flex-1 flex-col p-6 sm:p-7">
+                  <div className="relative flex flex-1 flex-col p-5 sm:p-7">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan">
                       Servicio {number}
                     </p>

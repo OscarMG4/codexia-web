@@ -12,7 +12,7 @@ export function CodePanel() {
           codexia.init
         </figcaption>
       </div>
-      <pre className="relative overflow-x-auto p-5 text-[13px] leading-7 text-fog sm:p-6 sm:text-sm xl:p-8 xl:text-base xl:leading-8">
+      <pre className="relative overflow-x-auto p-4 text-[12px] leading-6 text-fog sm:p-6 sm:text-sm sm:leading-7 xl:p-8 xl:text-base xl:leading-8">
         <code>
           <span className="text-mist">$ </span>
           <span className="text-cyan/90 font-semibold drop-shadow-[0_0_8px_rgba(125,211,252,0.4)]">codexia</span>

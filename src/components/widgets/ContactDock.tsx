@@ -51,7 +51,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
       {children}
 
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[80] flex justify-end p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-6">
-        <div className="pointer-events-auto flex w-full max-w-[min(100%,24rem)] flex-col items-end gap-3 sm:max-w-sm">
+        <div className="pointer-events-auto flex w-full max-w-[min(100%,20rem)] flex-col items-end gap-2.5 sm:max-w-sm sm:gap-3">
           {isFormOpen ? (
             <div
               role="dialog"

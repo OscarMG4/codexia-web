@@ -30,7 +30,7 @@ function WhatsAppFab({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`whatsapp-button pointer-events-auto relative flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110 ${className}`}
+      className={`whatsapp-button pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110 sm:h-[60px] sm:w-[60px] ${className}`}
       title="Contactar por WhatsApp"
       aria-label="Contactar por WhatsApp"
     >
@@ -120,10 +120,10 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
   if (!isVisible) return null;
 
   return (
-    <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-4">
+    <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-3 sm:gap-4">
       {bubbleVisible ? (
         <div
-          className={`whatsapp-bubble pointer-events-auto relative w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] ${
+          className={`whatsapp-bubble pointer-events-auto relative w-[min(17.5rem,calc(100vw-5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] sm:w-[min(19.5rem,calc(100vw-5.5rem))] ${
             isLeaving ? "whatsapp-bubble-out" : "whatsapp-bubble-in"
           }`}
         >

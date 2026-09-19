@@ -2,7 +2,7 @@
 
 import { Logo } from "@/components/brand/Logo";
 import { IconClose, IconMenu } from "@/components/icons/Icons";
-import { Button, WhatsAppButton } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
@@ -58,7 +58,7 @@ export function Navbar() {
       <div
         className={cn(
           "relative border-b transition-[background-color,border-color,box-shadow] duration-300",
-          scrolled
+          scrolled || open
             ? "border-white/10 bg-[#0b1224]/95 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl"
             : "border-white/8 bg-[#0b1224]/70 backdrop-blur-md",
         )}
@@ -72,9 +72,14 @@ export function Navbar() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-volt/70 to-cyan/40"
         />
 
-        <Container className="flex h-[4.15rem] items-center justify-between gap-4 xl:h-[4.5rem]">
-          <a href="#inicio" className="relative shrink-0" aria-label="CODEXIA, ir al inicio">
-            <Logo size={42} priority />
+        <Container className="flex h-14 items-center justify-between gap-3 sm:h-[4.15rem] sm:gap-4 xl:h-[4.5rem]">
+          <a
+            href="#inicio"
+            className="relative min-w-0 shrink"
+            aria-label="CODEXIA, ir al inicio"
+          >
+            <Logo size={34} className="sm:hidden" priority />
+            <Logo size={42} className="hidden sm:inline-flex" priority />
           </a>
 
           <nav aria-label="Principal" className="hidden min-w-0 lg:block">
@@ -130,11 +135,11 @@ export function Navbar() {
       <div
         id="menu-mobile"
         className={cn(
-          "border-b border-white/10 bg-[#0b1224]/96 backdrop-blur-xl lg:hidden",
+          "max-h-[calc(100svh-3.5rem)] overflow-y-auto border-b border-white/10 bg-[#0b1224]/98 backdrop-blur-xl lg:hidden",
           open ? "block" : "hidden",
         )}
       >
-        <Container className="py-4">
+        <Container className="py-3 pb-5">
           <ul className="divide-y divide-white/8">
             {site.nav.map((item) => {
               const id = item.href.replace("#", "");
@@ -144,7 +149,7 @@ export function Navbar() {
                   <a
                     href={item.href}
                     className={cn(
-                      "flex items-center justify-between py-3.5 text-base transition-colors",
+                      "flex min-h-12 items-center justify-between py-3 text-base transition-colors",
                       isActive ? "text-snow" : "text-mist hover:text-snow",
                     )}
                     onClick={() => setOpen(false)}
@@ -159,9 +164,9 @@ export function Navbar() {
             })}
           </ul>
           <div className="mt-4">
-            <Button 
+            <Button
               href={`https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`}
-              className="w-full" 
+              className="w-full"
               onClick={() => setOpen(false)}
             >
               Hablemos

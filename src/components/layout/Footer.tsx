@@ -7,7 +7,7 @@ import { whatsappUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-ink-soft pt-16 pb-28 sm:pb-24 overflow-hidden">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-ink-soft pt-12 pb-[7.5rem] sm:pt-16 sm:pb-24">
       {/* Fondo ambiente */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 left-1/4 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(61,91,255,0.12),transparent_70%)] blur-3xl" />

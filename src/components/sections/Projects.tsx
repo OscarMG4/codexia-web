@@ -11,7 +11,7 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-24 sm:py-28"
     >
       <SectionFlair variant="projects" />
 
@@ -24,7 +24,7 @@ export function Projects() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:mt-14 lg:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-2">
           {projects.map((project, index) => (
             <Reveal
               key={project.slug}

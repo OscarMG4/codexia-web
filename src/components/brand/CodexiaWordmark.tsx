@@ -9,7 +9,7 @@ export function CodexiaWordmark({ className }: CodexiaWordmarkProps) {
     <span
       aria-hidden="true"
       className={cn(
-        "inline-flex items-center font-display text-[1.02rem] font-extrabold tracking-[0.26em] text-snow sm:text-[1.08rem]",
+        "inline-flex items-center font-display text-[0.92rem] font-extrabold tracking-[0.2em] text-snow sm:text-[1.08rem] sm:tracking-[0.26em]",
         className,
       )}
     >

@@ -14,7 +14,7 @@ export function Container({
   id,
 }: ContainerProps) {
   return (
-    <Tag id={id} className={cn("mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8 xl:max-w-7xl 2xl:max-w-[84rem]", className)}>
+    <Tag id={id} className={cn("mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 xl:max-w-7xl 2xl:max-w-[84rem]", className)}>
       {children}
     </Tag>
   );
