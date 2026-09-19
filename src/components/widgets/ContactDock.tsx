@@ -28,14 +28,17 @@ export function useContactForm() {
   return context;
 }
 
-const HERO_EXIT_RATIO = 0.45;
-
-function hasLeftHomeHero() {
+/** Aparece al salir del inicio / al entrar a Servicios. */
+function hasReachedServices() {
+  const services = document.getElementById("servicios");
+  if (services) {
+    return services.getBoundingClientRect().top <= window.innerHeight * 0.92;
+  }
   const hero = document.getElementById("inicio");
   if (hero) {
-    return hero.getBoundingClientRect().bottom <= window.innerHeight * 0.55;
+    return hero.getBoundingClientRect().bottom <= window.innerHeight * 0.35;
   }
-  return window.scrollY > window.innerHeight * HERO_EXIT_RATIO;
+  return window.scrollY > window.innerHeight * 0.85;
 }
 
 export function ContactFormProvider({ children }: { children: ReactNode }) {
@@ -52,13 +55,13 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const reveal = () => setIsDockVisible(true);
 
-    if (hasLeftHomeHero()) {
+    if (hasReachedServices()) {
       reveal();
       return;
     }
 
     const onScroll = () => {
-      if (!hasLeftHomeHero()) return;
+      if (!hasReachedServices()) return;
       window.removeEventListener("scroll", onScroll);
       reveal();
     };
