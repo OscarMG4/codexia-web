@@ -11,9 +11,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DISMISS_KEY = "codexia-whatsapp-bubble-dismissed";
-const SERVICES_SECTION_ID = "servicios";
-const BUBBLE_DELAY_MS = 1600;
-const TYPING_MS = 1400;
+const WIDGET_REVEAL_MS = 700;
+const BUBBLE_DELAY_MS = 1400;
+const TYPING_MS = 1200;
 const EXIT_MS = 220;
 
 function WhatsAppFab({
@@ -66,29 +66,8 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
         : whatsappWebUrl(),
     );
 
-    const reveal = () => setIsVisible(true);
-
-    const section = document.getElementById(SERVICES_SECTION_ID);
-    const hasReachedServices = () => {
-      if (section) {
-        return section.getBoundingClientRect().top <= window.innerHeight * 0.72;
-      }
-      return window.scrollY > window.innerHeight * 0.28;
-    };
-
-    if (hasReachedServices()) {
-      reveal();
-      return;
-    }
-
-    const onScroll = () => {
-      if (!hasReachedServices()) return;
-      reveal();
-      window.removeEventListener("scroll", onScroll);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const reveal = window.setTimeout(() => setIsVisible(true), WIDGET_REVEAL_MS);
+    return () => window.clearTimeout(reveal);
   }, []);
 
   useEffect(() => {

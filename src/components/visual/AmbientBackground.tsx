@@ -13,14 +13,14 @@ export function AmbientBackground() {
           fill
           priority
           sizes="100vw"
-          className="scale-[1.2] object-cover object-[72%_35%] brightness-[1.35] contrast-[1.2] saturate-[1.25] sm:scale-105 sm:object-center sm:brightness-100 sm:contrast-100 sm:saturate-100"
+          className="scale-[1.15] object-cover object-[72%_32%] brightness-[1.3] contrast-[1.15] saturate-[1.2] sm:scale-105 sm:object-[60%_40%] sm:brightness-[1.1] sm:contrast-[1.05] sm:saturate-[1.1] lg:object-center lg:brightness-100 lg:contrast-100 lg:saturate-100"
         />
-        {/* Mobile: velo suave solo donde va el texto; el dibujo queda a la derecha y abajo */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1224]/82 via-[#0b1224]/35 to-transparent sm:hidden" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1224]/70 via-transparent to-[#0b1224]/25 sm:hidden" />
-        {/* Desktop */}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#0b1224]/92 via-[#0b1224]/55 to-[#0b1224]/15 sm:block" />
-        <div className="absolute inset-0 hidden bg-gradient-to-t from-[#0b1224]/80 via-transparent to-[#0b1224]/40 sm:block" />
+        {/* Mobile / tablet: deja ver el dibujo a la derecha */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1224]/85 via-[#0b1224]/40 to-transparent lg:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1224]/72 via-transparent to-[#0b1224]/30 lg:hidden" />
+        {/* Desktop / laptop: overlay más ligero para que se note la red/hexágonos */}
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#0b1224]/88 via-[#0b1224]/45 to-[#0b1224]/10 lg:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-[#0b1224]/70 via-transparent to-[#0b1224]/30 lg:block" />
       </div>
 
       <div className="animate-orb absolute -top-24 left-[8%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(61,91,255,0.22),transparent_68%)] blur-3xl" />
