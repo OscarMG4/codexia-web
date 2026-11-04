@@ -53,7 +53,7 @@ export function TechMarquee() {
             <li
               key={`${tech}-${index}`}
               aria-hidden={index >= techStack.length}
-              className="group flex items-center gap-3 rounded-xl border border-line bg-surface/80 px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm transition-colors hover:border-accent-border hover:text-fg sm:px-5 sm:py-3"
+              className="group flex items-center gap-3 rounded-xl border border-line bg-surface px-4 py-2.5 text-sm font-semibold whitespace-nowrap text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-colors hover:border-accent-border hover:text-fg sm:px-5 sm:py-3"
             >
               <svg
                 role="img"

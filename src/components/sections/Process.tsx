@@ -45,7 +45,7 @@ export function Process() {
                 <Reveal delay={(index % 3) * 90} className="h-full">
                   <article
                     className={cn(
-                      "spotlight spotlight-dark flex h-full flex-col rounded-2xl border p-7 backdrop-blur-sm transition-colors duration-300 sm:p-8",
+                      "spotlight spotlight-dark flex h-full flex-col rounded-2xl border p-7 transition-colors duration-300 sm:p-8",
                       isHighlight
                         ? "border-brand-400/40 bg-brand-500/10"
                         : "border-white/10 bg-white/[0.03]",

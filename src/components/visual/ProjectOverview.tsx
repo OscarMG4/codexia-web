@@ -19,7 +19,7 @@ const statusLabel = {
 
 export function ProjectOverview() {
   return (
-    <figure className="relative overflow-hidden rounded-2xl border border-line/70 bg-surface/95 text-fg shadow-[0_30px_60px_-24px_rgba(15,23,42,0.3)] backdrop-blur">
+    <figure className="relative overflow-hidden rounded-2xl border border-line/70 bg-surface text-fg shadow-[0_30px_60px_-24px_rgba(15,23,42,0.3)]">
       <figcaption className="flex items-center justify-between gap-3 border-b border-line px-5 py-4 sm:px-6">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-fg-subtle">

@@ -1,12 +1,11 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IconCheck } from "@/components/icons/Icons";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
-import { contactSchema, type ContactInput } from "@/lib/validation";
+import { contactRules, trimContact, type ContactInput } from "@/lib/validation";
 import { submitWeb3Form } from "@/lib/web3forms";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -30,11 +29,11 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
     reset,
     formState: { errors },
   } = useForm<ContactInput>({
-    resolver: zodResolver(contactSchema),
     defaultValues: { fullName: "", phone: "", email: "", message: "", website: "" },
   });
 
-  const onSubmit = handleSubmit(async (values) => {
+  const onSubmit = handleSubmit(async (rawValues) => {
+    const values = trimContact(rawValues);
     setStatus("sending");
     setErrorMessage("");
 
@@ -117,7 +116,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
         autoComplete="off"
         aria-hidden="true"
         className="hidden"
-        {...register("website")}
+        {...register("website", contactRules.website)}
       />
 
       <div className={cn(compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2")}>
@@ -135,7 +134,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
             placeholder="Ej. María Pérez Díaz"
             className={fieldClasses}
             aria-invalid={Boolean(errors.fullName)}
-            {...register("fullName")}
+            {...register("fullName", contactRules.fullName)}
           />
           {errors.fullName ? (
             <p className="mt-1.5 text-xs text-danger-fg">{errors.fullName.message}</p>
@@ -157,7 +156,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
             placeholder="Ej. 981 474 747"
             className={fieldClasses}
             aria-invalid={Boolean(errors.phone)}
-            {...register("phone")}
+            {...register("phone", contactRules.phone)}
           />
           {errors.phone ? (
             <p className="mt-1.5 text-xs text-danger-fg">{errors.phone.message}</p>
@@ -180,7 +179,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
           placeholder="Ej. tu@correo.com"
           className={fieldClasses}
           aria-invalid={Boolean(errors.email)}
-          {...register("email")}
+          {...register("email", contactRules.email)}
         />
         {errors.email ? (
           <p className="mt-1.5 text-xs text-danger-fg">{errors.email.message}</p>
@@ -201,7 +200,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
           placeholder="Cuéntame qué idea o proyecto tienes en mente."
           className={cn(fieldClasses, "resize-none")}
           aria-invalid={Boolean(errors.message)}
-          {...register("message")}
+          {...register("message", contactRules.message)}
         />
         {errors.message ? (
           <p className="mt-1.5 text-xs text-danger-fg">{errors.message.message}</p>

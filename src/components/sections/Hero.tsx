@@ -27,7 +27,7 @@ export function Hero() {
       <Container className="relative grid items-center gap-14 pb-14 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-20">
         <div className="min-w-0">
           <p
-            className="animate-rise inline-flex max-w-full items-center gap-2 rounded-full border border-accent-ring bg-surface/70 px-3.5 py-1.5 text-xs font-medium text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm"
+            className="animate-rise inline-flex max-w-full items-center gap-2 rounded-full border border-accent-ring bg-surface/90 px-3.5 py-1.5 text-xs font-medium text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
             style={{ animationDelay: "40ms" }}
           >
             <span className="live-dot h-2 w-2 shrink-0 rounded-full bg-emerald-500" />
@@ -88,13 +88,13 @@ export function Hero() {
           </div>
 
           {/* Badges flotantes */}
-          <div className="float-slower absolute -top-5 -left-3 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] backdrop-blur sm:flex lg:-left-8">
+          <div className="float-slower absolute -top-5 -left-3 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] sm:flex lg:-left-8">
             <span className="rounded-md bg-success-soft px-1.5 py-0.5 font-mono text-[11px] font-semibold text-success-fg">
               200
             </span>
             <span className="font-mono text-fg-muted">GET /api/v1/orders</span>
           </div>
-          <div className="float-slower absolute -right-3 -bottom-5 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] backdrop-blur sm:flex lg:-right-6">
+          <div className="float-slower absolute -right-3 -bottom-5 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] sm:flex lg:-right-6">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan text-white">
               <IconCheck className="h-3 w-3" />
             </span>
