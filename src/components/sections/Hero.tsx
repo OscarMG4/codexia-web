@@ -1,12 +1,10 @@
+import { IconArrow, IconCheck } from "@/components/icons/Icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { AmbientBackground } from "@/components/visual/AmbientBackground";
-import { CodePanel } from "@/components/visual/CodePanel";
-import { FloatingShapes } from "@/components/visual/FloatingShapes";
-import { GridPattern } from "@/components/visual/GridPattern";
-import { Marquee } from "@/components/visual/Marquee";
+import { ProjectOverview } from "@/components/visual/ProjectOverview";
+import { TechMarquee } from "@/components/visual/TechMarquee";
 import { site } from "@/lib/site";
-import Image from "next/image";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 export function Hero() {
   const accent = site.headlineAccent;
@@ -15,87 +13,105 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100svh] scroll-mt-24 flex-col overflow-hidden pt-24 sm:scroll-mt-24 sm:pt-28 lg:pt-28 xl:pt-32"
+      className="relative overflow-hidden bg-page pt-28 text-fg sm:pt-32 lg:pt-36"
     >
-      <AmbientBackground />
-      <GridPattern />
-      <FloatingShapes />
-
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute left-[10%] top-[20%] h-28 w-px bg-gradient-to-b from-transparent via-volt/40 to-transparent sm:left-[14%] sm:top-[18%] sm:h-48 xl:via-volt/45" />
-        <div className="absolute right-[12%] top-[22%] h-px w-20 bg-gradient-to-r from-transparent via-cyan/50 to-transparent sm:right-[18%] sm:top-[26%] sm:w-36 xl:via-cyan/55" />
-        <div className="absolute bottom-[28%] left-[8%] h-2 w-2 rounded-full bg-orchid/70 shadow-[0_0_16px_rgba(167,139,250,0.85)] sm:bottom-[30%] sm:left-[6%] sm:h-2.5 sm:w-2.5" />
-        <div className="absolute right-[8%] top-[14%] h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_14px_rgba(125,211,252,0.95)] sm:right-[10%] sm:top-[16%]" />
+      {/* Fondo: aurora animada + puntos + cuadrícula */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="aurora aurora-1 -top-32 right-[-8%] h-[26rem] w-[26rem] sm:h-[34rem] sm:w-[34rem]" />
+        <div className="aurora aurora-2 top-40 right-[22%] h-[18rem] w-[18rem] sm:h-[24rem] sm:w-[24rem]" />
+        <div className="aurora aurora-3 -left-24 top-24 h-[16rem] w-[16rem] sm:h-[22rem] sm:w-[22rem]" />
+        <div className="bg-dots mask-radial absolute inset-0 opacity-60" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-page" />
       </div>
 
-      <Container className="relative z-10 grid flex-1 items-center gap-7 pb-6 sm:gap-10 sm:pb-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pb-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16 xl:pb-14">
+      <Container className="relative grid items-center gap-14 pb-14 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-20">
         <div className="min-w-0">
           <p
-            className="animate-rise mb-3 inline-flex max-w-full items-center gap-2 rounded-full border border-volt/35 bg-volt/15 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan shadow-[0_0_24px_rgba(61,91,255,0.25)] backdrop-blur-sm sm:mb-4 sm:gap-3 sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.28em]"
+            className="animate-rise inline-flex max-w-full items-center gap-2 rounded-full border border-accent-ring bg-surface/70 px-3.5 py-1.5 text-xs font-medium text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm"
             style={{ animationDelay: "40ms" }}
           >
-            <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-cyan shadow-[0_0_8px_rgba(125,211,252,0.8)]" />
-            <span className="truncate">{site.tagline}</span>
+            <span className="live-dot h-2 w-2 shrink-0 rounded-full bg-emerald-500" />
+            {site.heroEyebrow}
           </p>
 
           <h1
-            className="animate-rise font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[2.85rem] xl:text-[4.1rem] 2xl:text-[4.75rem]"
-            style={{ animationDelay: "90ms" }}
+            className="animate-rise mt-6 font-display text-[2.1rem] leading-[1.08] font-extrabold tracking-tight min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4.1rem]"
+            style={{ animationDelay: "100ms" }}
           >
             {titleStart}{" "}
             <span className="text-gradient">{accent}</span>
           </h1>
 
           <p
-            className="animate-rise mt-3 max-w-xl text-[15px] leading-relaxed text-mist sm:mt-4 sm:text-base lg:text-[15px] xl:mt-6 xl:max-w-2xl xl:text-lg"
-            style={{ animationDelay: "140ms" }}
+            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-fg-muted"
+            style={{ animationDelay: "160ms" }}
           >
-            {site.proposition}
-          </p>
-
-          <p
-            className="animate-rise mt-2 hidden max-w-xl text-sm leading-relaxed text-fog lg:mt-3 xl:mt-4 xl:block xl:max-w-2xl xl:text-base"
-            style={{ animationDelay: "180ms" }}
-          >
-            {site.heroLead}
+            {site.proposition} {site.heroLead}
           </p>
 
           <div
-            className="animate-rise mt-5 flex flex-col gap-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-5 lg:mt-6 xl:mt-8"
+            className="animate-rise mt-9 flex flex-col gap-3 sm:flex-row"
             style={{ animationDelay: "220ms" }}
           >
-            <Button href="#servicios" className="w-full sm:w-auto">
-              {site.cta}
+            <Button href={whatsappUrl()} size="lg">
+              Agenda una consulta
+              <IconArrow className="h-4 w-4" />
             </Button>
-            <div className="flex items-center gap-3">
-              <span className="relative inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-volt/60 shadow-[0_0_32px_rgba(61,91,255,0.6)] sm:h-11 sm:w-11">
-                <Image
-                  src={site.avatar}
-                  alt=""
-                  width={44}
-                  height={44}
-                  className="h-full w-full object-cover object-[50%_18%]"
-                />
-              </span>
-              <p className="text-xs leading-snug text-mist sm:text-sm">
-                Un solo interlocutor. Diseña, desarrolla y lanza contigo.
-              </p>
-            </div>
+            <Button href="#portafolio" variant="secondary" size="lg">
+              Ver portafolio
+            </Button>
           </div>
+
+          <ul
+            className="animate-rise mt-10 grid gap-3 sm:grid-cols-3 sm:gap-4"
+            style={{ animationDelay: "280ms" }}
+          >
+            {site.assurances.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-fg-muted">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-violet text-white">
+                  <IconCheck className="h-3 w-3" />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div
-          className="animate-rise relative mt-1 sm:mt-0 lg:justify-self-end lg:w-full lg:max-w-[28rem] xl:max-w-none"
-          style={{ animationDelay: "120ms" }}
+          className="animate-rise relative mx-auto w-full max-w-md lg:max-w-none"
+          style={{ animationDelay: "180ms" }}
         >
-          <div className="absolute -left-3 -top-3 h-12 w-12 rounded-2xl border border-volt/40 bg-volt/15 shadow-[0_0_36px_rgba(61,91,255,0.35)] sm:-left-4 sm:-top-4 sm:h-16 sm:w-16 sm:rounded-3xl lg:-left-5 lg:-top-6 lg:h-20 lg:w-20 lg:border-volt/45 lg:bg-volt/20 lg:shadow-[0_0_50px_rgba(61,91,255,0.4)] xl:-left-6 xl:-top-8 xl:h-24 xl:w-24" />
-          <div className="absolute -right-2 bottom-6 h-10 w-10 rounded-full border border-cyan/35 bg-cyan/15 shadow-[0_0_28px_rgba(125,211,252,0.3)] sm:-right-2.5 sm:bottom-7 sm:h-12 sm:w-12 lg:-right-3 lg:bottom-8 lg:h-14 lg:w-14 lg:border-cyan/40 lg:bg-cyan/20 lg:shadow-[0_0_40px_rgba(125,211,252,0.35)] xl:-right-4 xl:bottom-10 xl:h-16 xl:w-16" />
-          <CodePanel />
+          <div className="float-slow">
+            <div className="glow-border rounded-2xl">
+              <ProjectOverview />
+            </div>
+          </div>
+
+          {/* Badges flotantes */}
+          <div className="float-slower absolute -top-5 -left-3 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] backdrop-blur sm:flex lg:-left-8">
+            <span className="rounded-md bg-success-soft px-1.5 py-0.5 font-mono text-[11px] font-semibold text-success-fg">
+              200
+            </span>
+            <span className="font-mono text-fg-muted">GET /api/v1/orders</span>
+          </div>
+          <div className="float-slower absolute -right-3 -bottom-5 hidden items-center gap-2 rounded-xl border border-line bg-surface/90 px-3 py-2 text-xs font-medium shadow-[0_12px_30px_-12px_rgba(15,23,42,0.3)] backdrop-blur sm:flex lg:-right-6">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-cyan text-white">
+              <IconCheck className="h-3 w-3" />
+            </span>
+            <span className="text-fg">Deploy exitoso</span>
+            <span className="text-fg-subtle">· hace 2 min</span>
+          </div>
         </div>
       </Container>
 
-      <div className="animate-rise mt-1 sm:mt-0" style={{ animationDelay: "320ms" }}>
-        <Marquee />
+      {/* Stack tecnológico */}
+      <div className="relative pb-14 sm:pb-16">
+        <Container>
+          <p className="mb-5 text-center text-xs font-semibold tracking-[0.16em] text-fg-subtle uppercase">
+            Tecnologías con las que trabajamos
+          </p>
+        </Container>
+        <TechMarquee />
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ import { submitWeb3Form } from "@/lib/web3forms";
 type Status = "idle" | "sending" | "success" | "error";
 
 const fieldClasses =
-  "w-full rounded-xl border border-white/10 bg-ink px-4 py-3.5 text-sm text-snow placeholder:text-mist/70 transition-colors duration-200 focus:border-volt focus:outline-none";
+  "w-full rounded-lg border border-line bg-surface-muted px-3.5 py-2.5 text-[15px] text-fg placeholder:text-fg-subtle/70 transition-colors duration-200 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-accent-ring aria-[invalid=true]:border-red-400";
 
 type ContactFormProps = {
   compact?: boolean;
@@ -86,22 +86,22 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-2xl bg-volt/10 px-6 py-10 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-volt text-white">
+      <div className="flex flex-col items-center gap-4 rounded-xl bg-accent-soft px-6 py-10 text-center">
+        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-white">
           <IconCheck className="h-6 w-6" />
         </span>
         <div>
-          <p className="font-display text-lg font-semibold text-snow">
+          <p className="font-display text-lg font-bold text-fg">
             ¡Mensaje enviado!
           </p>
-          <p className="mt-2 text-sm text-mist">
+          <p className="mt-2 text-sm text-fg-muted">
             Te responderé muy pronto para hablar de tu proyecto.
           </p>
         </div>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-snow hover:bg-white/5"
+          className="rounded-lg border border-line bg-surface-muted px-4 py-2 text-sm font-semibold text-fg hover:bg-surface-muted"
         >
           Enviar otro mensaje
         </button>
@@ -124,7 +124,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
         <div>
           <label
             htmlFor={`${idPrefix}fullName`}
-            className="mb-2 block text-sm font-medium text-mist"
+            className="mb-1.5 block text-sm font-medium text-fg-muted"
           >
             Nombres y apellidos
           </label>
@@ -138,14 +138,14 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
             {...register("fullName")}
           />
           {errors.fullName ? (
-            <p className="mt-1.5 text-xs text-red-400">{errors.fullName.message}</p>
+            <p className="mt-1.5 text-xs text-danger-fg">{errors.fullName.message}</p>
           ) : null}
         </div>
 
         <div>
           <label
             htmlFor={`${idPrefix}phone`}
-            className="mb-2 block text-sm font-medium text-mist"
+            className="mb-1.5 block text-sm font-medium text-fg-muted"
           >
             Celular
           </label>
@@ -160,7 +160,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
             {...register("phone")}
           />
           {errors.phone ? (
-            <p className="mt-1.5 text-xs text-red-400">{errors.phone.message}</p>
+            <p className="mt-1.5 text-xs text-danger-fg">{errors.phone.message}</p>
           ) : null}
         </div>
       </div>
@@ -168,7 +168,7 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor={`${idPrefix}email`}
-          className="mb-2 block text-sm font-medium text-mist"
+          className="mb-1.5 block text-sm font-medium text-fg-muted"
         >
           Tu correo electrónico
         </label>
@@ -183,14 +183,14 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
           {...register("email")}
         />
         {errors.email ? (
-          <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>
+          <p className="mt-1.5 text-xs text-danger-fg">{errors.email.message}</p>
         ) : null}
       </div>
 
       <div>
         <label
           htmlFor={`${idPrefix}message`}
-          className="mb-2 block text-sm font-medium text-mist"
+          className="mb-1.5 block text-sm font-medium text-fg-muted"
         >
           Mensaje
         </label>
@@ -204,12 +204,12 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
           {...register("message")}
         />
         {errors.message ? (
-          <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>
+          <p className="mt-1.5 text-xs text-danger-fg">{errors.message.message}</p>
         ) : null}
       </div>
 
       {status === "error" ? (
-        <p className="rounded-xl bg-red-500/10 px-4 py-3 text-xs text-red-300">
+        <p className="rounded-lg border border-danger-ring bg-danger-soft px-4 py-3 text-xs text-danger-fg">
           {errorMessage}
         </p>
       ) : null}
@@ -217,12 +217,12 @@ export function ContactForm({ compact = false, onSuccess }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex w-full items-center justify-center rounded-full bg-volt px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#2f4cf0] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center btn-gradient rounded-lg px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {status === "sending" ? "Enviando..." : "Quiero más información"}
+        {status === "sending" ? "Enviando..." : "Enviar solicitud"}
       </button>
 
-      <p className="text-center text-[11px] leading-relaxed text-mist">
+      <p className="text-center text-xs leading-relaxed text-fg-subtle">
         Al enviar aceptas que CODEXIA te contacte por celular o correo.
       </p>
     </form>

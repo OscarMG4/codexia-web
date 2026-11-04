@@ -30,12 +30,10 @@ function WhatsAppFab({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`whatsapp-button pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110 sm:h-[60px] sm:w-[60px] ${className}`}
+      className={`whatsapp-button pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_24px_-6px_rgba(37,211,102,0.6)] transition-transform duration-200 hover:scale-105 sm:h-[60px] sm:w-[60px] ${className}`}
       title="Contactar por WhatsApp"
       aria-label="Contactar por WhatsApp"
     >
-      <span className="whatsapp-ring" aria-hidden="true" />
-      <span className="whatsapp-ring whatsapp-ring-delayed" aria-hidden="true" />
       <span className="relative z-[1]">
         <IconWhatsApp className="h-8 w-8" />
       </span>
@@ -103,13 +101,13 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
     <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-3 sm:gap-4">
       {bubbleVisible ? (
         <div
-          className={`whatsapp-bubble pointer-events-auto relative w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-[22px] bg-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55),0_12px_28px_-8px_rgba(15,23,42,0.45)] ${
+          className={`whatsapp-bubble pointer-events-auto relative w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-2xl border border-slate-200 bg-white shadow-[0_24px_60px_-12px_rgba(15,23,42,0.35)] ${
             isLeaving ? "whatsapp-bubble-out" : "whatsapp-bubble-in"
           }`}
         >
-          <div className="whatsapp-bubble-header relative flex items-center gap-3 rounded-t-[22px] bg-gradient-to-r from-[#128C7E] via-[#25D366] to-[#20bd5a] px-3.5 py-3 pr-10">
+          <div className="whatsapp-bubble-header relative flex items-center gap-3 rounded-t-2xl bg-[#128C7E] px-3.5 py-3 pr-10">
             <span className="whatsapp-avatar relative inline-flex h-10 w-10">
-              <span className="h-10 w-10 overflow-hidden rounded-full bg-ink ring-[2.5px] ring-white">
+              <span className="h-10 w-10 overflow-hidden rounded-full bg-navy-900 ring-2 ring-white">
                 <Image
                   src={site.avatar}
                   alt="CODEXIA"
@@ -118,7 +116,7 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
                   className="h-full w-full object-cover object-[50%_18%]"
                 />
               </span>
-              <span className="whatsapp-online absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-[#b7ff53]" />
+              <span className="whatsapp-online absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-[#4ade80]" />
             </span>
             <div className="min-w-0 text-white">
               <p className="truncate text-[13px] font-bold leading-tight">
@@ -149,7 +147,7 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
           >
             {isTyping ? (
               <div className="flex h-full items-center">
-                <span className="inline-flex items-center gap-1 rounded-2xl bg-[#f0f2f5] px-3.5 py-2.5">
+                <span className="inline-flex items-center gap-1 rounded-xl bg-slate-100 px-3.5 py-2.5">
                   <span className="whatsapp-dot" />
                   <span className="whatsapp-dot" />
                   <span className="whatsapp-dot" />
@@ -157,10 +155,10 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
               </div>
             ) : (
               <div className="whatsapp-message">
-                <p className="mb-3 text-[15px] font-medium leading-snug text-slate-800">
-                  ¿Tienes una idea para tu negocio? Conversemos por WhatsApp. 👋
+                <p className="mb-3 text-sm leading-snug text-slate-700">
+                  Hola, ¿tienes un proyecto en mente? Conversemos por WhatsApp.
                 </p>
-                <span className="whatsapp-cta inline-flex w-full items-center justify-center rounded-xl bg-[#25D366] px-3 py-2.5 text-[13px] font-bold text-white shadow-[0_8px_18px_-6px_rgba(37,211,102,0.9)]">
+                <span className="inline-flex w-full items-center justify-center rounded-lg bg-[#25D366] px-3 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#1fb658]">
                   Chatear ahora
                 </span>
               </div>
