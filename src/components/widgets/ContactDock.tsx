@@ -144,7 +144,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
                     ? "Cerrar formulario de correo"
                     : "Abrir formulario de correo"
                 }
-                className="widget-enter inline-flex h-14 w-14 items-center justify-center gap-2 rounded-2xl bg-navy-900 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(15,23,42,0.5)] ring-1 ring-white/10 transition-colors hover:bg-navy-700 sm:h-[3.75rem] sm:w-auto sm:px-5"
+                className="widget-enter inline-flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-navy-900 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(15,23,42,0.5)] ring-1 ring-white/10 transition-colors hover:bg-navy-700 sm:h-[3.75rem] sm:w-auto sm:px-5"
               >
                 {isFormOpen ? (
                   <IconClose className="h-4 w-4" />
