@@ -41,7 +41,6 @@ export default async function OpenGraphImage() {
             background: "#080e1a",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={logoSrc}
             alt="CODEXIA"
