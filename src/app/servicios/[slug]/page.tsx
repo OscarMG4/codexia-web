@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SpotlightEffects } from "@/components/visual/SpotlightEffects";
+import { PageEffects } from "@/components/visual/PageEffects";
 import { ContactFormProvider } from "@/components/widgets/ContactDock";
 import {
   breadcrumbSchema,
@@ -92,7 +92,7 @@ export default async function ServicePage({
           faqSchema(service.seo.faqs, path),
         ]}
       />
-      <SpotlightEffects />
+      <PageEffects />
       <Navbar />
 
       <main id="contenido">
@@ -127,16 +127,12 @@ export default async function ServicePage({
               </nav>
 
               <h1
-                className="animate-rise mt-6 font-display text-[2rem] leading-[1.1] font-extrabold tracking-tight min-[400px]:text-[2.25rem] sm:text-5xl lg:text-[3.25rem]"
-                style={{ animationDelay: "80ms" }}
+                className="mt-6 font-display text-[2rem] leading-[1.1] font-extrabold tracking-tight min-[400px]:text-[2.25rem] sm:text-5xl lg:text-[3.25rem]"
               >
                 {service.seo.h1}
               </h1>
 
-              <p
-                className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-fg-muted"
-                style={{ animationDelay: "140ms" }}
-              >
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
                 {service.seo.intro}
               </p>
 

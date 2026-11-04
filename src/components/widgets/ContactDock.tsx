@@ -1,8 +1,7 @@
 "use client";
 
-import { ContactForm } from "@/components/forms/ContactForm";
+import { LazyContactForm } from "@/components/forms/LazyContactForm";
 import { IconClose, IconMail } from "@/components/icons/Icons";
-import { WhatsAppWidget } from "@/components/widgets/WhatsAppWidget";
 import { site } from "@/lib/site";
 import {
   createContext,
@@ -17,6 +16,25 @@ type ContactFormContextValue = {
   openForm: () => void;
   closeForm: () => void;
 };
+
+type WhatsAppWidgetType = typeof import("@/components/widgets/WhatsAppWidget").WhatsAppWidget;
+
+// El dock aparece recién al llegar a Servicios: su código se descarga en ese momento
+function LazyWhatsAppWidget(props: React.ComponentProps<WhatsAppWidgetType>) {
+  const [Widget, setWidget] = useState<WhatsAppWidgetType | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void import("@/components/widgets/WhatsAppWidget").then((mod) => {
+      if (!cancelled) setWidget(() => mod.WhatsAppWidget);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return Widget ? <Widget {...props} /> : null;
+}
 
 const ContactFormContext = createContext<ContactFormContextValue | null>(null);
 
@@ -111,7 +129,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
                   </button>
                 </div>
                 <div className="max-h-[65vh] overflow-y-auto px-5 py-5">
-                  <ContactForm compact />
+                  <LazyContactForm compact eager />
                 </div>
               </div>
             ) : null}
@@ -138,7 +156,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
                 </span>
               </button>
 
-              <WhatsAppWidget suppressBubble={isFormOpen} />
+              <LazyWhatsAppWidget suppressBubble={isFormOpen} />
             </div>
           </div>
         </div>

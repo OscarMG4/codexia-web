@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/forms/ContactForm";
+import { LazyContactForm } from "@/components/forms/LazyContactForm";
 import { IconMail, IconWhatsApp } from "@/components/icons/Icons";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -75,7 +75,7 @@ export function Contact() {
                 Completa el formulario y te contacto a la brevedad.
               </p>
               <div className="mt-6">
-                <ContactForm />
+                <LazyContactForm />
               </div>
             </div>
           </Reveal>
