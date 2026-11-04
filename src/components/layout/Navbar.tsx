@@ -4,23 +4,35 @@ import { Logo } from "@/components/brand/Logo";
 import { IconClose, IconMenu } from "@/components/icons/Icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/cn";
-import { site } from "@/lib/site";
-import { useEffect, useState } from "react";
+import { navId, site } from "@/lib/site";
+import Link from "next/link";
+import { whatsappUrl } from "@/lib/whatsapp";
+import { useEffect, useRef, useState } from "react";
 
-const sectionIds = site.nav.map((item) => item.href.replace("#", ""));
+const sectionIds = site.nav.map((item) => navId(item.href));
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState(sectionIds[0]);
+  const progressRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const update = () => {
-      setScrolled(window.scrollY > 16);
+      setScrolled(window.scrollY > 24);
+
+      // Se escribe directo en el DOM para no re-renderizar en cada frame de scroll
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress})`;
+      }
 
       const marker = window.innerHeight * 0.28;
-      let current = sectionIds[0];
+      // En páginas sin estas secciones (servicios) ningún ítem queda activo
+      let current = document.getElementById(sectionIds[0]) ? sectionIds[0] : "";
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (!el) continue;
@@ -53,53 +65,54 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Sobre el hero el header es transparente; al hacer scroll gana fondo sólido
+  const solid = scrolled || open;
+
   return (
     <header className="animate-drop fixed inset-x-0 top-0 z-50">
       <div
         className={cn(
           "relative border-b transition-[background-color,border-color,box-shadow] duration-300",
-          scrolled || open
-            ? "border-white/10 bg-[#0b1224]/95 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl"
-            : "border-white/8 bg-[#0b1224]/70 backdrop-blur-md",
+          solid
+            ? "border-line bg-page/90 shadow-[0_1px_12px_rgba(15,23,42,0.06)] backdrop-blur-md"
+            : "border-transparent bg-transparent",
         )}
       >
         <span
+          ref={progressRef}
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-volt/0 via-volt/50 to-orchid/0"
+          className="scroll-progress absolute inset-x-0 bottom-0 h-0.5"
+          style={{ transform: "scaleX(0)" }}
         />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-volt/70 to-cyan/40"
-        />
-
-        <Container className="flex h-16 items-center justify-between gap-3 sm:h-[4.25rem] sm:gap-4 xl:h-[4.5rem]">
-          <a
-            href="#inicio"
-            className="relative flex h-full min-w-0 shrink items-center"
+        <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
+          <Link
+            href="/#inicio"
+            className="flex min-w-0 shrink items-center"
             aria-label="CODEXIA, ir al inicio"
           >
-            <Logo size={40} className="items-center leading-none" priority />
-          </a>
+            <Logo size={36} priority />
+          </Link>
 
-          <nav aria-label="Principal" className="hidden min-w-0 lg:block">
-            <ul className="flex items-center gap-0.5">
+          <nav aria-label="Principal" className="hidden lg:block">
+            <ul className="flex items-center">
               {site.nav.map((item) => {
-                const id = item.href.replace("#", "");
+                const id = navId(item.href);
                 const isActive = activeId === id;
                 return (
                   <li key={item.href}>
                     <a
                       href={item.href}
+                      aria-current={isActive ? "true" : undefined}
                       className={cn(
-                        "relative inline-flex items-center px-3.5 py-2 text-[13px] font-medium tracking-wide transition-colors xl:px-4 xl:text-sm",
-                        isActive ? "text-snow" : "text-mist hover:text-snow",
+                        "relative inline-flex items-center rounded-md px-2.5 py-2 text-sm font-medium transition-colors xl:px-3.5",
+                        isActive ? "text-fg" : "text-fg-subtle hover:text-fg",
                       )}
                     >
                       {item.label}
                       <span
                         aria-hidden="true"
                         className={cn(
-                          "absolute inset-x-3.5 -bottom-0.5 h-[2px] origin-left rounded-full bg-gradient-to-r from-volt to-cyan transition-opacity duration-300 xl:inset-x-4",
+                          "absolute inset-x-2.5 -bottom-[17px] h-0.5 rounded-full bg-brand-400 transition-opacity duration-300 xl:inset-x-3.5",
                           isActive ? "opacity-100" : "opacity-0",
                         )}
                       />
@@ -111,17 +124,15 @@ export function Navbar() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
+            <ThemeToggle />
             <div className="hidden lg:block">
-              <Button
-                href={`https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`}
-                className="px-4 py-2 text-[13px] shadow-[0_0_24px_rgba(61,91,255,0.28)] xl:px-5 xl:py-2.5 xl:text-sm"
-              >
-                Hablemos
-              </Button>
+              <Button href={whatsappUrl()}>Agenda una consulta</Button>
             </div>
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/12 bg-white/[0.04] text-snow transition-colors hover:border-volt/40 hover:bg-volt/10 lg:hidden"
+              className={cn(
+                "inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line text-fg transition-colors hover:bg-surface-muted lg:hidden",
+              )}
               aria-expanded={open}
               aria-controls="menu-mobile"
               onClick={() => setOpen((value) => !value)}
@@ -136,28 +147,28 @@ export function Navbar() {
       <div
         id="menu-mobile"
         className={cn(
-          "max-h-[calc(100svh-3.5rem)] overflow-y-auto border-b border-white/10 bg-[#0b1224]/98 backdrop-blur-xl lg:hidden",
+          "max-h-[calc(100svh-4rem)] overflow-y-auto border-b border-line bg-page lg:hidden",
           open ? "block" : "hidden",
         )}
       >
-        <Container className="py-3 pb-5">
-          <ul className="divide-y divide-white/8">
+        <Container className="py-2 pb-5">
+          <ul className="divide-y divide-line">
             {site.nav.map((item) => {
-              const id = item.href.replace("#", "");
+              const id = navId(item.href);
               const isActive = activeId === id;
               return (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     className={cn(
-                      "flex min-h-12 items-center justify-between py-3 text-base transition-colors",
-                      isActive ? "text-snow" : "text-mist hover:text-snow",
+                      "flex min-h-12 items-center justify-between py-3 text-base font-medium transition-colors",
+                      isActive ? "text-fg" : "text-fg-subtle hover:text-fg",
                     )}
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
                     {isActive ? (
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan shadow-[0_0_10px_rgba(125,211,252,0.8)]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
                     ) : null}
                   </a>
                 </li>
@@ -166,11 +177,12 @@ export function Navbar() {
           </ul>
           <div className="mt-4">
             <Button
-              href={`https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`}
+              href={whatsappUrl()}
+              size="lg"
               className="w-full"
               onClick={() => setOpen(false)}
             >
-              Hablemos
+              Agenda una consulta
             </Button>
           </div>
         </Container>

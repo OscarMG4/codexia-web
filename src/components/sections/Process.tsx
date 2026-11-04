@@ -1,7 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SectionFlair } from "@/components/visual/SectionFlair";
 import { cn } from "@/lib/cn";
 import { processSteps } from "@/lib/site";
 
@@ -9,107 +8,83 @@ export function Process() {
   return (
     <section
       id="proceso"
-      className="relative scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-24 sm:py-28"
+      className="relative scroll-mt-16 overflow-hidden bg-navy-950 py-20 text-white sm:py-28"
     >
-      <SectionFlair variant="process" />
+      {/* Banda oscura: rompe el fondo claro y da el toque tecnológico */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="bg-grid-dark mask-radial absolute inset-0" />
+        <div className="aurora aurora-1 -top-40 left-[10%] h-[24rem] w-[24rem]" style={{ opacity: 0.3 }} />
+        <div className="aurora aurora-2 right-[5%] bottom-[-10rem] h-[26rem] w-[26rem]" style={{ opacity: 0.25 }} />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/60 to-transparent" />
+      </div>
 
       <Container className="relative">
         <Reveal>
-          <SectionHeading
-            eyebrow="Proceso"
-            title="De la idea al lanzamiento, sin perder claridad."
-            description="Seis etapas con resultado concreto. Sabes qué ocurre, qué decides y qué recibes en cada paso."
-          />
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <SectionHeading
+              tone="dark"
+              eyebrow="Proceso"
+              title="De la idea al lanzamiento, sin perder claridad."
+            />
+            <p className="max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg lg:pb-1">
+              Seis etapas con un entregable concreto. Sabes qué ocurre, qué
+              decides y qué recibes en cada paso.
+            </p>
+          </div>
         </Reveal>
 
-        <ol className="relative mt-8 space-y-3 sm:mt-14 sm:space-y-4 md:mt-16">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            {processSteps.map((step, index) => {
-              const isHighlight = step.number === "04";
+        {/* Línea con haz de luz que conecta las etapas */}
+        <div aria-hidden="true" className="beam mt-12 h-px bg-white/10 sm:mt-16" />
 
-              return (
-                <li key={step.number} className="relative">
-                  <Reveal
-                    delay={index * 120}
-                    variant={index % 2 === 0 ? "left" : "right"}
-                    className="h-full"
+        <ol className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {processSteps.map((step, index) => {
+            const isHighlight = step.number === "04";
+
+            return (
+              <li key={step.number}>
+                <Reveal delay={(index % 3) * 90} className="h-full">
+                  <article
+                    className={cn(
+                      "spotlight spotlight-dark flex h-full flex-col rounded-2xl border p-7 backdrop-blur-sm transition-colors duration-300 sm:p-8",
+                      isHighlight
+                        ? "border-brand-400/40 bg-brand-500/10"
+                        : "border-white/10 bg-white/[0.03]",
+                    )}
                   >
-                    <article
-                      className={cn(
-                        "group relative flex h-full gap-4 overflow-hidden rounded-[1.7rem] border p-5 transition-all duration-500 sm:gap-5 sm:p-6",
-                        "hover:-translate-y-1.5",
-                        isHighlight
-                          ? "border-volt/35 bg-[linear-gradient(160deg,rgba(61,91,255,0.18),rgba(11,18,36,0.92)_42%,rgba(167,139,250,0.1))] shadow-[0_24px_60px_rgba(61,91,255,0.22)]"
-                          : "border-white/10 bg-panel/75 shadow-[0_16px_40px_rgba(0,0,0,0.2)] hover:border-volt/30 hover:shadow-[0_24px_55px_rgba(61,91,255,0.2)]",
-                      )}
-                    >
-                      <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,211,252,0.12),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                      />
-
-                      <div className="relative shrink-0">
-                        <span
-                          className={cn(
-                            "relative z-10 flex h-11 w-11 items-center justify-center rounded-2xl border text-sm font-bold tracking-wide sm:h-12 sm:w-12 sm:text-base",
-                            isHighlight
-                              ? "border-cyan/50 bg-volt/30 text-snow shadow-[0_0_28px_rgba(61,91,255,0.45)]"
-                              : "border-volt/30 bg-volt/15 text-cyan shadow-[0_0_20px_rgba(61,91,255,0.22)] group-hover:border-cyan/45 group-hover:text-snow",
-                          )}
-                        >
-                          {step.number}
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="bg-gradient-to-br from-brand-300 via-violet to-cyan bg-clip-text font-display text-4xl font-extrabold text-transparent">
+                        {step.number}
+                      </span>
+                      {isHighlight ? (
+                        <span className="rounded-full bg-brand-500/20 px-2.5 py-0.5 text-[11px] font-semibold text-brand-200 ring-1 ring-brand-400/30">
+                          Acuerdo formal
                         </span>
-                      </div>
+                      ) : null}
+                    </div>
 
-                      <div className="relative min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="font-display text-lg font-bold leading-snug text-snow sm:text-xl">
-                            {step.title}
-                          </h3>
-                          {isHighlight ? (
-                            <span className="shrink-0 rounded-full border border-cyan/30 bg-cyan/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan">
-                              Acuerdo
-                            </span>
-                          ) : null}
-                        </div>
-                        <p className="mt-2.5 text-sm leading-relaxed text-mist sm:text-[15px]">
-                          {step.description}
+                    <h3 className="mt-5 font-display text-xl font-bold text-white">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2.5 text-[15px] leading-relaxed text-slate-300">
+                      {step.description}
+                    </p>
+
+                    <div className="mt-auto pt-6">
+                      <div className="border-t border-white/10 pt-4">
+                        <p className="text-xs font-semibold tracking-[0.12em] text-slate-400 uppercase">
+                          Entregable
                         </p>
-                        <p className="mt-3 border-t border-white/8 pt-3 text-sm leading-relaxed text-fog">
-                          <span className="font-semibold text-cyan">Resultado: </span>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-300">
                           {step.outcome}
                         </p>
-
-                        <div className="mt-5 flex items-center gap-1.5">
-                          {processSteps.map((_, i) => (
-                            <span
-                              key={i}
-                              aria-hidden="true"
-                              className={cn(
-                                "h-1 flex-1 rounded-full transition-colors duration-500",
-                                i <= index
-                                  ? isHighlight
-                                    ? "bg-gradient-to-r from-volt to-cyan"
-                                    : "bg-volt/55 group-hover:bg-cyan/70"
-                                  : "bg-white/8",
-                              )}
-                            />
-                          ))}
-                        </div>
                       </div>
-                    </article>
-                  </Reveal>
-                </li>
-              );
-            })}
-          </div>
+                    </div>
+                  </article>
+                </Reveal>
+              </li>
+            );
+          })}
         </ol>
-
-        <Reveal delay={420} variant="fade">
-          <p className="mt-8 text-center text-sm text-mist/90 sm:mt-10">
-            Cada etapa termina con una decisión clara antes de pasar a la siguiente.
-          </p>
-        </Reveal>
       </Container>
     </section>
   );

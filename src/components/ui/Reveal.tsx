@@ -12,38 +12,6 @@ type RevealProps = {
   variant?: RevealVariant;
 };
 
-function waitForIntroDone(): Promise<void> {
-  if (typeof document === "undefined") return Promise.resolve();
-  if (document.documentElement.classList.contains("intro-done")) {
-    return Promise.resolve();
-  }
-
-  return new Promise((resolve) => {
-    const check = () => {
-      if (document.documentElement.classList.contains("intro-done")) {
-        observer.disconnect();
-        window.clearInterval(poll);
-        resolve();
-      }
-    };
-
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    const poll = window.setInterval(check, 120);
-    // Fallback por si el intro no marca la clase
-    window.setTimeout(() => {
-      observer.disconnect();
-      window.clearInterval(poll);
-      document.documentElement.classList.add("intro-done");
-      resolve();
-    }, 2500);
-  });
-}
-
 export function Reveal({
   children,
   className,
@@ -56,68 +24,17 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    let revealed = false;
-    let observer: IntersectionObserver | null = null;
-    let cancelled = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        node.classList.add("is-visible");
+        observer.disconnect();
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
 
-    const reveal = () => {
-      if (revealed || cancelled) return;
-      revealed = true;
-      // Forzar reflow para que la transición se note al añadir la clase
-      void node.offsetWidth;
-      node.classList.add("is-visible");
-      observer?.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-
-    const isInView = () => {
-      const rect = node.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      // En mobile dispara más tarde para que el movimiento se note al scrollear
-      const trigger = window.matchMedia("(max-width: 639px)").matches
-        ? vh * 0.78
-        : vh * 0.88;
-      return rect.top < trigger && rect.bottom > 40;
-    };
-
-    const onScroll = () => {
-      if (isInView()) reveal();
-    };
-
-    const start = async () => {
-      await waitForIntroDone();
-      if (cancelled || !node.isConnected) return;
-
-      const mobile = window.matchMedia("(max-width: 639px)").matches;
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) return;
-          reveal();
-        },
-        {
-          threshold: mobile ? 0.12 : 0.08,
-          rootMargin: mobile ? "0px 0px -18% 0px" : "0px 0px -6% 0px",
-        },
-      );
-
-      observer.observe(node);
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("resize", onScroll);
-      // Pequeño delay para que el estado inicial (opacity 0) se pinte antes
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(onScroll);
-      });
-    };
-
-    void start();
-
-    return () => {
-      cancelled = true;
-      observer?.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
 
   return (

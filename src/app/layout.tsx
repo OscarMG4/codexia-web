@@ -1,23 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Syne } from "next/font/google";
-import { PageIntro } from "@/components/brand/PageIntro";
-import {
-  organizationSchema,
-  webPageSchema,
-  websiteSchema,
-} from "@/lib/schema";
-import { absoluteUrl, site } from "@/lib/site";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { absoluteUrl, isIndexable, location, site } from "@/lib/site";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const syne = Syne({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-jakarta",
   weight: ["500", "600", "700", "800"],
   display: "swap",
 });
@@ -42,9 +40,7 @@ export const metadata: Metadata = {
   publisher: site.name,
   applicationName: site.name,
   category: "technology",
-  alternates: {
-    canonical: "/",
-  },
+  // El canonical lo define cada página (home y servicios)
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
@@ -65,11 +61,11 @@ export const metadata: Metadata = {
     images: [ogImage.url],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: isIndexable(),
+    follow: isIndexable(),
     googleBot: {
-      index: true,
-      follow: true,
+      index: isIndexable(),
+      follow: isIndexable(),
       "max-image-preview": "large",
       "max-snippet": -1,
       "max-video-preview": -1,
@@ -78,39 +74,60 @@ export const metadata: Metadata = {
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
+  // Señales geográficas para búsquedas locales (Chiclayo, Lambayeque)
+  other: {
+    "geo.region": location.regionCode,
+    "geo.placename": `${location.city}, ${location.region}`,
+    "geo.position": `${location.geo.latitude};${location.geo.longitude}`,
+    ICBM: `${location.geo.latitude}, ${location.geo.longitude}`,
+  },
 };
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
 export const viewport: Viewport = {
-  themeColor: "#0b1224",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f5f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1020" },
+  ],
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
 };
 
-const jsonLd = [organizationSchema(), websiteSchema(), webPageSchema()];
+const jsonLd = [organizationSchema(), websiteSchema()];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang={site.lang} className={`${outfit.variable} ${syne.variable}`}>
+    <html
+      lang={site.lang}
+      className={`${inter.variable} ${jakarta.variable}`}
+      // data-theme lo fija themeInitScript antes de hidratar
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="font-sans antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd schema={jsonLd} />
         <a
           href="#contenido"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-snow focus:px-4 focus:py-2 focus:text-ink"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-fg"
         >
           Saltar al contenido
         </a>
-        <PageIntro />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('intro-done')){r.classList.remove('intro-active');r.classList.add('intro-done');}},2800);",
-          }}
-        />
         {children}
+        {gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","${gaId}");`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

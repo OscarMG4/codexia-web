@@ -5,6 +5,7 @@ type SectionHeadingProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
+  tone?: "light" | "dark";
   className?: string;
 };
 
@@ -13,8 +14,11 @@ export function SectionHeading({
   title,
   description,
   align = "left",
+  tone = "light",
   className,
 }: SectionHeadingProps) {
+  const dark = tone === "dark";
+
   return (
     <div
       className={cn(
@@ -24,16 +28,36 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 flex w-fit max-w-full items-center gap-2 rounded-full border border-volt/25 bg-volt/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan sm:mb-4 sm:text-[11px] sm:tracking-[0.24em]">
-          <span className="pulse-dot h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+        <p
+          className={cn(
+            "mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.14em] uppercase",
+            dark
+              ? "border-white/15 bg-white/5 text-brand-200"
+              : "border-accent-ring bg-accent-soft text-accent-fg",
+          )}
+        >
+          <span
+            aria-hidden="true"
+            className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-brand-500 to-cyan"
+          />
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="font-display text-[1.75rem] font-bold leading-tight tracking-tight text-snow sm:text-4xl lg:text-[2.9rem] lg:leading-[1.12]">
+      <h2
+        className={cn(
+          "font-display text-[1.75rem] leading-[1.15] font-bold tracking-tight sm:text-4xl lg:text-[2.6rem]",
+          dark ? "text-white" : "text-fg",
+        )}
+      >
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 text-[15px] leading-relaxed text-mist sm:mt-4 sm:text-lg">
+        <p
+          className={cn(
+            "mt-4 text-base leading-relaxed sm:text-lg",
+            dark ? "text-slate-300" : "text-fg-muted",
+          )}
+        >
           {description}
         </p>
       ) : null}

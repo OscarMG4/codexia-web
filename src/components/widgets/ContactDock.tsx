@@ -90,14 +90,14 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
               <div
                 role="dialog"
                 aria-label="Formulario de contacto por correo"
-                className="w-full overflow-hidden rounded-[1.6rem] border border-white/10 bg-ink-soft shadow-2xl"
+                className="w-full overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_24px_60px_-12px_rgba(15,23,42,0.3)]"
               >
-                <div className="flex items-start justify-between gap-4 bg-ink px-5 py-4">
+                <div className="flex items-start justify-between gap-4 border-b border-white/10 bg-navy-900 px-5 py-4">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-fog">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                       {site.name}
                     </p>
-                    <p className="mt-1 font-display text-base font-semibold text-snow">
+                    <p className="mt-1 font-display text-base font-bold text-white">
                       Escríbeme por correo
                     </p>
                   </div>
@@ -105,7 +105,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
                     type="button"
                     onClick={closeForm}
                     aria-label="Minimizar formulario"
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-snow/70 hover:text-snow"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-slate-300 hover:bg-white/10 hover:text-white"
                   >
                     <IconClose className="h-4 w-4" />
                   </button>
@@ -126,7 +126,7 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
                     ? "Cerrar formulario de correo"
                     : "Abrir formulario de correo"
                 }
-                className="mb-1 inline-flex h-12 w-12 items-center justify-center gap-2 rounded-full bg-[#0b1224] text-sm font-semibold text-white shadow-[0_10px_28px_rgba(61,91,255,0.28)] ring-1 ring-volt/45 transition hover:-translate-y-0.5 hover:ring-volt/70 hover:shadow-[0_12px_32px_rgba(61,91,255,0.4)] sm:w-auto sm:px-5 widget-enter"
+                className="widget-enter mb-1 inline-flex h-12 w-12 items-center justify-center gap-2 rounded-full bg-navy-900 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(15,23,42,0.5)] ring-1 ring-white/10 transition-colors hover:bg-navy-700 sm:w-auto sm:px-5"
               >
                 {isFormOpen ? (
                   <IconClose className="h-4 w-4" />

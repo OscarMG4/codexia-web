@@ -1,9 +1,7 @@
-import { IconArrow } from "@/components/icons/Icons";
+import { IconArrow, IconExternal } from "@/components/icons/Icons";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SectionFlair } from "@/components/visual/SectionFlair";
-import { cn } from "@/lib/cn";
 import { projects } from "@/lib/site";
 import Image from "next/image";
 
@@ -11,103 +9,92 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="relative scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-24 sm:py-28"
+      className="scroll-mt-16 bg-page-alt py-20 sm:py-28"
     >
-      <SectionFlair variant="projects" />
-
-      <Container className="relative">
+      <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow="Proyectos"
-            title="Trabajo real, con resultado visible."
-            description="Casos publicados. Más proyectos se irán sumando a medida que avance CODEXIA."
-          />
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <SectionHeading
+              eyebrow="Proyectos para clientes"
+              title="Trabajo real, con resultado visible."
+            />
+            <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg lg:pb-1">
+              Casos publicados y en producción. Más proyectos se irán sumando a
+              medida que avance CODEXIA.
+            </p>
+          </div>
         </Reveal>
 
-        <div className="mt-8 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-2">
+        <div className="mt-12 grid gap-8 sm:mt-16 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <Reveal
-              key={project.slug}
-              delay={index * 140}
-              variant={index % 2 === 0 ? "left" : "right"}
-              className="h-full"
-            >
-              <article
-                className={cn(
-                  "group flex h-full flex-col overflow-hidden rounded-[1.8rem] border transition-all duration-500",
-                  "hover:-translate-y-1.5",
-                  index === 0
-                    ? "border-volt/30 bg-[linear-gradient(180deg,rgba(22,30,54,0.95),rgba(11,18,36,0.98))] shadow-[0_24px_60px_rgba(61,91,255,0.22)]"
-                    : "border-white/10 bg-panel/80 shadow-[0_16px_40px_rgba(0,0,0,0.22)] hover:border-volt/30 hover:shadow-[0_28px_60px_rgba(61,91,255,0.22)]",
-                )}
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={`Proyecto ${project.name} — ${project.subtitle}`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1224] via-[#0b1224]/30 to-transparent" />
-                  <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-snow backdrop-blur-md">
-                    {project.category}
-                  </span>
+            <Reveal key={project.slug} delay={index * 100} className="h-full">
+              <article className="spotlight group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-accent-border">
+                {/* Captura dentro de un marco de navegador */}
+                <div className="border-b border-line bg-surface-muted p-4 sm:p-6">
+                  <div className="overflow-hidden rounded-lg border border-line bg-surface shadow-sm">
+                    <div className="flex items-center gap-2 border-b border-line px-3 py-2">
+                      <span className="h-2 w-2 rounded-full bg-line-strong" />
+                      <span className="h-2 w-2 rounded-full bg-line-strong" />
+                      <span className="h-2 w-2 rounded-full bg-line-strong" />
+                      <span className="ml-2 truncate rounded bg-surface-muted px-2 py-0.5 text-[11px] text-fg-subtle">
+                        {project.urlLabel}
+                      </span>
+                    </div>
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={`Proyecto ${project.name} — ${project.subtitle}`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="relative flex flex-1 flex-col p-6 sm:p-7">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan">
-                    Caso publicado
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-snow">
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
+                    <span className="rounded-full bg-accent-soft px-2.5 py-1 text-accent-fg ring-1 ring-accent-ring">
+                      {project.category}
+                    </span>
+                    <span className="text-fg-subtle">{project.subtitle}</span>
+                  </div>
+
+                  <h3 className="mt-4 font-display text-2xl font-bold text-fg">
                     {project.name}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-orchid">
-                    {project.subtitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-mist">
+                  <p className="mt-3 text-[15px] leading-relaxed text-fg-muted">
                     {project.description}
                   </p>
 
-                  <div className="mt-4 rounded-xl border border-white/8 bg-white/[0.03] px-3.5 py-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan">
+                  <div className="mt-5 border-l-2 border-brand-500 pl-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-fg-subtle">
                       Resultado
                     </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-fog">
+                    <p className="mt-1 text-sm leading-relaxed text-fg-muted">
                       {project.result}
                     </p>
                   </div>
 
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <li
-                        key={tech}
-                        className="rounded-full border border-volt/20 bg-volt/10 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-fog"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-7 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-7">
+                    <ul className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <li
+                          key={tech}
+                          className="rounded-md border border-line px-2 py-0.5 text-xs font-medium text-fg-muted"
+                        >
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-cyan transition-colors group-hover:text-snow"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-fg transition-colors hover:text-fg"
                     >
                       Ver sitio en vivo
-                      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-cyan/25 bg-cyan/10 transition-all duration-500 group-hover:translate-x-1">
-                        <IconArrow className="h-3.5 w-3.5" />
-                      </span>
-                    </a>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="truncate text-xs text-mist transition-colors hover:text-cyan"
-                    >
-                      {project.urlLabel}
+                      <IconExternal className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 </div>
@@ -115,6 +102,18 @@ export function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={150}>
+          <div className="mt-10 flex justify-center">
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-fg-muted transition-colors hover:text-accent-fg"
+            >
+              ¿Quieres que tu proyecto sea el siguiente?
+              <IconArrow className="h-4 w-4" />
+            </a>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

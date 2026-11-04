@@ -5,6 +5,7 @@ import Image from "next/image";
 type LogoProps = {
   className?: string;
   markClassName?: string;
+  wordmarkClassName?: string;
   showWordmark?: boolean;
   size?: number;
   priority?: boolean;
@@ -13,16 +14,18 @@ type LogoProps = {
 export function Logo({
   className,
   markClassName,
+  wordmarkClassName,
   showWordmark = true,
-  size = 48,
+  size = 40,
   priority = false,
 }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-2.5 leading-none sm:gap-3", className)}>
       <span
         className={cn(
-          "relative inline-flex shrink-0 overflow-hidden rounded-full ring-1 ring-white/20 shadow-[0_0_22px_rgba(61,91,255,0.28)]",
+          "relative inline-flex shrink-0 overflow-hidden rounded-lg bg-black ring-1 ring-black/10",
           markClassName,
+  wordmarkClassName,
         )}
         style={{ width: size, height: size }}
       >
@@ -35,7 +38,7 @@ export function Logo({
           priority={priority}
         />
       </span>
-      {showWordmark ? <CodexiaWordmark /> : null}
+      {showWordmark ? <CodexiaWordmark className={wordmarkClassName} /> : null}
       <span className="sr-only">CODEXIA</span>
     </span>
   );
