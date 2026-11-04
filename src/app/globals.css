@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Pantallas anchas pero bajas (laptops): el hero se compacta para que entre completo */
+@custom-variant laptop (@media (min-width: 1024px) and (max-height: 960px));
+
 :root {
   --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-jakarta: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;

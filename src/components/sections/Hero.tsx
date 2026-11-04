@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-page pt-28 text-fg sm:pt-32 lg:pt-36"
+      className="relative overflow-hidden bg-page pt-28 text-fg sm:pt-32 lg:pt-36 laptop:pt-24"
     >
       {/* Fondo: aurora animada + puntos + cuadrícula */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -24,7 +24,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-page" />
       </div>
 
-      <Container className="relative grid items-center gap-14 pb-14 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-20">
+      <Container className="relative grid items-center gap-14 pb-14 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-20 laptop:pb-8">
         <div className="min-w-0">
           <p
             className="animate-rise inline-flex max-w-full items-center gap-2 rounded-full border border-accent-ring bg-surface/90 px-3.5 py-1.5 text-xs font-medium text-fg-muted shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
@@ -35,18 +35,18 @@ export function Hero() {
           </p>
 
           <h1
-            className="mt-6 font-display text-[2.1rem] leading-[1.08] font-extrabold tracking-tight min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4.1rem]"
+            className="mt-6 font-display text-[2.1rem] leading-[1.08] font-extrabold tracking-tight min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4.1rem] laptop:mt-4 laptop:text-[2.9rem]"
           >
             {titleStart}{" "}
             <span className="text-gradient">{accent}</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted laptop:mt-4 laptop:text-base">
             {site.proposition} {site.heroLead}
           </p>
 
           <div
-            className="animate-rise mt-9 flex flex-col gap-3 sm:flex-row"
+            className="animate-rise mt-9 flex flex-col gap-3 sm:flex-row laptop:mt-6"
             style={{ animationDelay: "220ms" }}
           >
             <Button href={whatsappUrl()} size="lg">
@@ -59,7 +59,7 @@ export function Hero() {
           </div>
 
           <ul
-            className="animate-rise mt-10 grid gap-3 sm:grid-cols-3 sm:gap-4"
+            className="animate-rise mt-10 grid gap-3 sm:grid-cols-3 sm:gap-4 laptop:mt-6"
             style={{ animationDelay: "280ms" }}
           >
             {site.assurances.map((item) => (
@@ -101,9 +101,9 @@ export function Hero() {
       </Container>
 
       {/* Stack tecnológico */}
-      <div className="relative pb-14 sm:pb-16">
+      <div className="relative pb-14 sm:pb-16 laptop:pb-6">
         <Container>
-          <p className="mb-5 text-center text-xs font-semibold tracking-[0.16em] text-fg-subtle uppercase">
+          <p className="mb-5 text-center text-xs laptop:mb-3 font-semibold tracking-[0.16em] text-fg-subtle uppercase">
             Tecnologías con las que trabajamos
           </p>
         </Container>
