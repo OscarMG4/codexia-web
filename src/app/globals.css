@@ -584,7 +584,6 @@ body {
   .animate-drop,
   .widget-enter,
   .whatsapp-bubble-in,
-  .whatsapp-online,
   .whatsapp-dot {
     animation: none !important;
     opacity: 1;
@@ -668,16 +667,6 @@ body {
   }
 }
 
-@keyframes whatsapp-online {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
-  }
-}
-
 .whatsapp-bubble-in {
   transform-origin: bottom right;
   animation: whatsapp-bubble-in 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -692,24 +681,8 @@ body {
   animation: whatsapp-avatar-in 0.35s ease-out both;
 }
 
-.whatsapp-online {
-  animation: whatsapp-online 2s ease-out infinite;
-}
-
 .whatsapp-message {
   animation: whatsapp-message-in 0.3s ease-out both;
-}
-
-.whatsapp-tail {
-  position: absolute;
-  right: 22px;
-  bottom: -7px;
-  width: 14px;
-  height: 14px;
-  background: white;
-  transform: rotate(45deg);
-  border-radius: 2px;
-  box-shadow: 3px 3px 6px -3px rgba(15, 23, 42, 0.2);
 }
 
 .whatsapp-badge {
@@ -730,4 +703,45 @@ body {
 
 .whatsapp-dot:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+/* Botón flotante de WhatsApp: anillo que gira y pulso (solo transform/opacity) */
+.wa-spin {
+  background: conic-gradient(from 0deg, transparent 0deg, #34e37f 70deg, var(--color-cyan) 140deg, var(--color-brand-500) 210deg, transparent 280deg);
+  animation: wa-spin 3.5s linear infinite;
+  will-change: transform;
+}
+
+@keyframes wa-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wa-ping {
+  background: rgba(34, 197, 94, 0.35);
+  animation: wa-ping 2.4s ease-out infinite;
+}
+
+@keyframes wa-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  75%,
+  to {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-spin,
+  .wa-ping {
+    animation: none;
+  }
+
+  .wa-ping {
+    opacity: 0;
+  }
 }
