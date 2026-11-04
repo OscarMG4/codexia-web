@@ -46,17 +46,17 @@ export function useContactForm() {
   return context;
 }
 
-/** Aparece al salir del inicio / al entrar a Servicios. */
-function hasReachedServices() {
-  const services = document.getElementById("servicios");
-  if (services) {
-    return services.getBoundingClientRect().top <= window.innerHeight * 0.92;
-  }
+/**
+ * El dock aparece cuando el usuario ya dejó atrás el hero (scroll real), para
+ * no tapar el contenido principal en pantallas donde el hero ocupa casi todo.
+ */
+function hasLeftHero() {
   const hero = document.getElementById("inicio");
   if (hero) {
-    return hero.getBoundingClientRect().bottom <= window.innerHeight * 0.35;
+    return hero.getBoundingClientRect().bottom <= window.innerHeight * 0.4;
   }
-  return window.scrollY > window.innerHeight * 0.85;
+  // Páginas sin hero de inicio (servicios): tras bajar más de media pantalla
+  return window.scrollY > window.innerHeight * 0.6;
 }
 
 export function ContactFormProvider({ children }: { children: ReactNode }) {
@@ -73,13 +73,13 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const reveal = () => setIsDockVisible(true);
 
-    if (hasReachedServices()) {
+    if (hasLeftHero()) {
       reveal();
       return;
     }
 
     const onScroll = () => {
-      if (!hasReachedServices()) return;
+      if (!hasLeftHero()) return;
       window.removeEventListener("scroll", onScroll);
       reveal();
     };
