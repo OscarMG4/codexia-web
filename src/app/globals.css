@@ -294,7 +294,7 @@ body {
   }
 }
 
-/* Spotlight que sigue al mouse (variables --mx/--my desde SpotlightEffects) */
+/* Spotlight que sigue al mouse (variables --mx/--my desde PageEffects) */
 .spotlight {
   position: relative;
   isolation: isolate;

@@ -10,7 +10,7 @@ import { Process } from "@/components/sections/Process";
 import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
 import { WhyCodexia } from "@/components/sections/WhyCodexia";
-import { SpotlightEffects } from "@/components/visual/SpotlightEffects";
+import { PageEffects } from "@/components/visual/PageEffects";
 import { ContactFormProvider } from "@/components/widgets/ContactDock";
 import { faqSchema, webPageSchema } from "@/lib/schema";
 import { homeFaqs } from "@/lib/site";
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <ContactFormProvider>
       <JsonLd schema={[webPageSchema(), faqSchema(homeFaqs)]} />
-      <SpotlightEffects />
+      <PageEffects />
       <Navbar />
       <main id="contenido">
         <Hero />

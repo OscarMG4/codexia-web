@@ -35,17 +35,13 @@ export function Hero() {
           </p>
 
           <h1
-            className="animate-rise mt-6 font-display text-[2.1rem] leading-[1.08] font-extrabold tracking-tight min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4.1rem]"
-            style={{ animationDelay: "100ms" }}
+            className="mt-6 font-display text-[2.1rem] leading-[1.08] font-extrabold tracking-tight min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4.1rem]"
           >
             {titleStart}{" "}
             <span className="text-gradient">{accent}</span>
           </h1>
 
-          <p
-            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-fg-muted"
-            style={{ animationDelay: "160ms" }}
-          >
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
             {site.proposition} {site.heroLead}
           </p>
 
