@@ -25,7 +25,6 @@ export function Logo({
         className={cn(
           "relative inline-flex shrink-0 overflow-hidden rounded-lg bg-black ring-1 ring-black/10",
           markClassName,
-  wordmarkClassName,
         )}
         style={{ width: size, height: size }}
       >

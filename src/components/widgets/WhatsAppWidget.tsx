@@ -98,10 +98,10 @@ export function WhatsAppWidget({ suppressBubble = false }: WhatsAppWidgetProps) 
   if (!isVisible) return null;
 
   return (
-    <div className="whatsapp-widget widget-enter pointer-events-none flex flex-col items-end gap-3 sm:gap-4">
+    <div className="whatsapp-widget widget-enter pointer-events-none relative">
       {bubbleVisible ? (
         <div
-          className={`whatsapp-bubble pointer-events-auto relative w-[min(19.5rem,calc(100vw-5.5rem))] overflow-visible rounded-2xl border border-slate-200 bg-white shadow-[0_24px_60px_-12px_rgba(15,23,42,0.35)] ${
+          className={`whatsapp-bubble pointer-events-auto absolute right-0 bottom-full mb-4 w-[min(19.5rem,calc(100vw-1.5rem))] overflow-visible rounded-2xl border border-slate-200 bg-white shadow-[0_24px_60px_-12px_rgba(15,23,42,0.35)] ${
             isLeaving ? "whatsapp-bubble-out" : "whatsapp-bubble-in"
           }`}
         >
