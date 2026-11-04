@@ -11,6 +11,8 @@ type Service = (typeof services)[number];
 
 const organizationId = absoluteUrl("/#organization");
 
+const brandAliases = ["Codexia", "CODEXIA Chiclayo", "CODEXIA Perú"] as const;
+
 export function serviceUrl(service: Service): string {
   return absoluteUrl(`/servicios/${service.slug}`);
 }
@@ -30,7 +32,7 @@ export function organizationSchema(): Record<string, unknown> {
     "@type": "ProfessionalService",
     "@id": organizationId,
     name: site.name,
-    alternateName: ["Codexia", "CODEXIA Chiclayo", "CODEXIA Perú"],
+    alternateName: [...brandAliases],
     url: site.url,
     slogan: site.tagline,
     description: site.description,
@@ -82,7 +84,9 @@ export function websiteSchema(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": absoluteUrl("/#website"),
+    // name + alternateName: lo que Google usa como "nombre del sitio" en resultados
     name: site.name,
+    alternateName: [...brandAliases],
     url: site.url,
     description: site.description,
     inLanguage: site.lang,

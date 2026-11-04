@@ -37,7 +37,7 @@ export const location = {
 
 export const site = {
   name: "CODEXIA",
-  title: "Desarrollo Web y Software a Medida en Chiclayo | CODEXIA",
+  title: "CODEXIA | Desarrollo Web y Software a Medida en Chiclayo",
   tagline: "IDEAS + CÓDIGO = SOLUCIONES",
   headline: "Convierte tus ideas en productos digitales.",
   headlineAccent: "productos digitales.",
@@ -84,7 +84,7 @@ export const site = {
     { href: "/#contacto", label: "Contacto" },
   ],
   cta: "Ver servicios",
-  heroEyebrow: "Desarrollo de software a medida · Chiclayo, Perú",
+  heroEyebrow: "CODEXIA · Software a medida en Chiclayo, Perú",
   assurances: [
     "Cotización formal y contrato",
     "Plazos y alcance definidos",
