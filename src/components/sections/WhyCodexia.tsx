@@ -19,7 +19,7 @@ export function WhyCodexia() {
     <section className="relative overflow-hidden bg-page py-20 sm:py-28">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bg-grid-light mask-fade-b absolute inset-x-0 top-0 h-80" />
-        <div className="aurora aurora-2 top-1/3 -left-40 h-[24rem] w-[24rem]" style={{ opacity: 0.14 }} />
+        <div className="aurora aurora-still aurora-2 top-1/3 -left-40 h-[24rem] w-[24rem]" style={{ opacity: 0.14 }} />
       </div>
 
       <Container className="relative">

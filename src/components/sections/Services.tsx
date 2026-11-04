@@ -28,7 +28,7 @@ export function Services() {
       className="relative scroll-mt-16 overflow-hidden bg-page-alt py-20 sm:py-28"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="aurora aurora-3 -top-20 right-[-6%] h-[22rem] w-[22rem]" style={{ opacity: 0.16 }} />
+        <div className="aurora aurora-still aurora-3 -top-20 right-[-6%] h-[22rem] w-[22rem]" style={{ opacity: 0.16 }} />
       </div>
       <Container className="relative">
         <Reveal>

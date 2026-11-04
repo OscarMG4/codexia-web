@@ -52,7 +52,7 @@ export function Portfolio() {
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bg-dots mask-radial absolute inset-0 opacity-40" />
-        <div className="aurora aurora-1 top-1/4 -left-32 h-[24rem] w-[24rem]" style={{ opacity: 0.16 }} />
+        <div className="aurora aurora-still aurora-1 top-1/4 -left-32 h-[24rem] w-[24rem]" style={{ opacity: 0.16 }} />
       </div>
       <Container className="relative">
         <Reveal>

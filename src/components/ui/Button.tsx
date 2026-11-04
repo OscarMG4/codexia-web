@@ -33,7 +33,7 @@ export function Button({
         size === "lg" && "px-6 py-3.5 text-[15px]",
         variant === "primary" && "btn-gradient text-white",
         variant === "secondary" &&
-          "border border-line-strong bg-surface/70 text-fg backdrop-blur-sm hover:border-accent-border hover:bg-surface",
+          "border border-line-strong bg-surface/90 text-fg hover:border-accent-border hover:bg-surface",
         variant === "ghost" && "text-fg-muted hover:text-fg",
         className,
       )}

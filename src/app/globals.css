@@ -95,8 +95,7 @@
 
 /* Las auroras se ven más fuertes sobre oscuro: se atenúan un poco */
 :root[data-theme="dark"] .aurora {
-  filter: blur(90px) saturate(0.9);
-  opacity: 0.32;
+  opacity: 0.4;
 }
 
 /* Transición suave solo durante el cambio de tema (la activa ThemeToggle) */
@@ -167,52 +166,47 @@ body {
 
 /* ---------- Efectos tecnológicos ---------- */
 
-/* Texto con degradado animado */
+/* Texto con degradado (estático: animarlo repinta el título en cada frame) */
 .text-gradient {
-  background: linear-gradient(
-    90deg,
-    var(--color-brand-600),
-    var(--color-violet),
-    var(--color-cyan),
-    var(--color-brand-600)
-  );
-  background-size: 300% auto;
+  background: linear-gradient(90deg, var(--color-brand-600), var(--color-violet) 55%, var(--color-cyan));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-pan 8s linear infinite;
 }
 
-@keyframes gradient-pan {
-  to {
-    background-position: 300% center;
-  }
-}
-
-/* Blobs "aurora" que se mueven lento detrás del hero */
+/*
+ * Blobs "aurora". El difuminado sale de un degradado radial, no de filter: blur
+ * (un blur de 80px sobre un elemento animado es carísimo en móviles). Solo se
+ * anima transform, que la GPU compone sin repintar.
+ */
 .aurora {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.55;
+  opacity: 0.6;
   will-change: transform;
 }
 
 .aurora-1 {
-  background: var(--color-brand-400);
+  background: radial-gradient(circle, var(--color-brand-400) 0%, transparent 68%);
   animation: aurora-a 18s ease-in-out infinite;
 }
 
 .aurora-2 {
-  background: var(--color-violet);
-  opacity: 0.35;
+  background: radial-gradient(circle, var(--color-violet) 0%, transparent 68%);
+  opacity: 0.4;
   animation: aurora-b 22s ease-in-out infinite;
 }
 
 .aurora-3 {
-  background: var(--color-cyan);
-  opacity: 0.3;
+  background: radial-gradient(circle, var(--color-cyan) 0%, transparent 68%);
+  opacity: 0.35;
   animation: aurora-c 20s ease-in-out infinite;
+}
+
+/* Auroras decorativas fuera del hero: quietas */
+.aurora-still {
+  animation: none;
+  will-change: auto;
 }
 
 @keyframes aurora-a {
@@ -245,10 +239,10 @@ body {
   }
 }
 
-/* Borde con degradado que gira (tarjetas destacadas) */
+/* Borde con degradado (gira solo al pasar el mouse: animarlo siempre repinta cada frame) */
 @property --angle {
   syntax: "<angle>";
-  initial-value: 0deg;
+  initial-value: 200deg;
   inherits: false;
 }
 
@@ -276,18 +270,22 @@ body {
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   mask-composite: exclude;
-  animation: spin-angle 6s linear infinite;
+}
+
+@media (hover: hover) {
+  .glow-border:hover::before {
+    animation: spin-angle 4s linear infinite;
+  }
 }
 
 .glow-border::after {
   content: "";
   position: absolute;
-  inset: 10%;
+  inset: -12%;
   z-index: -2;
   border-radius: inherit;
-  background: linear-gradient(135deg, var(--color-brand-500), var(--color-violet), var(--color-cyan));
-  filter: blur(48px);
-  opacity: 0.28;
+  background: radial-gradient(closest-side, rgba(124, 92, 246, 0.35), transparent);
+  opacity: 0.8;
 }
 
 @keyframes spin-angle {
@@ -409,18 +407,29 @@ body {
   }
 }
 
-/* Punto "en vivo" */
+/* Punto "en vivo": el anillo se anima con transform/opacity (compuesto en GPU) */
 .live-dot {
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  position: relative;
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
   animation: live-ping 2s ease-out infinite;
 }
 
 @keyframes live-ping {
-  70% {
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  from {
+    transform: scale(1);
+    opacity: 0.6;
   }
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  70%,
+  to {
+    transform: scale(2.6);
+    opacity: 0;
   }
 }
 
@@ -563,12 +572,11 @@ body {
     scroll-behavior: auto;
   }
 
-  .text-gradient,
   .aurora,
   .glow-border::before,
   .float-slow,
   .float-slower,
-  .live-dot,
+  .live-dot::after,
   .marquee-track,
   .beam::after,
   .animate-rise,

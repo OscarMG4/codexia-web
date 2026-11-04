@@ -27,8 +27,8 @@ export function Contact() {
   return (
     <section id="contacto" className="relative scroll-mt-16 overflow-hidden bg-page py-20 sm:py-28">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="aurora aurora-1 top-10 right-[-10%] h-[26rem] w-[26rem]" style={{ opacity: 0.18 }} />
-        <div className="aurora aurora-3 bottom-0 left-[-8%] h-[20rem] w-[20rem]" style={{ opacity: 0.14 }} />
+        <div className="aurora aurora-still aurora-1 top-10 right-[-10%] h-[26rem] w-[26rem]" style={{ opacity: 0.18 }} />
+        <div className="aurora aurora-still aurora-3 bottom-0 left-[-8%] h-[20rem] w-[20rem]" style={{ opacity: 0.14 }} />
       </div>
       <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
