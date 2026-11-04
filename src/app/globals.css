@@ -98,16 +98,14 @@
   opacity: 0.4;
 }
 
-/* Transición suave solo durante el cambio de tema (la activa ThemeToggle) */
-:root.theme-transition,
-:root.theme-transition *,
-:root.theme-transition *::before,
-:root.theme-transition *::after {
-  transition:
-    background-color 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease,
-    fill 0.35s ease !important;
+/*
+ * Cambio de tema con View Transitions (ver ThemeToggle): se desactiva el
+ * fundido por defecto; el tema nuevo entra con un círculo animado por JS.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 html {

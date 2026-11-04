@@ -18,16 +18,54 @@ function subscribe(onChange: () => void) {
   return () => observer.disconnect();
 }
 
-function applyTheme(theme: Theme) {
-  const root = document.documentElement;
-  root.classList.add("theme-transition");
-  root.dataset.theme = theme;
+function saveTheme(theme: Theme) {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
     // Almacenamiento bloqueado: el tema se aplica igual en esta visita
   }
-  window.setTimeout(() => root.classList.remove("theme-transition"), 400);
+}
+
+/**
+ * Cambia el tema con la View Transitions API: el navegador anima solo dos
+ * capturas (antes/después) en la GPU, en vez de transicionar cada elemento.
+ * El tema nuevo se expande en círculo desde el botón. Sin soporte, cambia al instante.
+ */
+function applyTheme(theme: Theme, origin: { x: number; y: number }) {
+  const root = document.documentElement;
+  saveTheme(theme);
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!document.startViewTransition || reduceMotion) {
+    root.dataset.theme = theme;
+    return;
+  }
+
+  const transition = document.startViewTransition(() => {
+    root.dataset.theme = theme;
+  });
+
+  // Radio hasta la esquina más lejana para cubrir toda la pantalla
+  const radius = Math.hypot(
+    Math.max(origin.x, window.innerWidth - origin.x),
+    Math.max(origin.y, window.innerHeight - origin.y),
+  );
+
+  void transition.ready.then(() => {
+    root.animate(
+      {
+        clipPath: [
+          `circle(0px at ${origin.x}px ${origin.y}px)`,
+          `circle(${radius}px at ${origin.x}px ${origin.y}px)`,
+        ],
+      },
+      {
+        duration: 550,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        pseudoElement: "::view-transition-new(root)",
+      },
+    );
+  });
 }
 
 export function ThemeToggle({ className }: { className?: string }) {
@@ -37,7 +75,13 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      onClick={() => applyTheme(isDark ? "light" : "dark")}
+      onClick={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        applyTheme(isDark ? "light" : "dark", {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+        });
+      }}
       aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
       title={isDark ? "Modo claro" : "Modo oscuro"}
       className={cn(
