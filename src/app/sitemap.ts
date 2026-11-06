@@ -1,4 +1,4 @@
-import { absoluteUrl, services } from "@/lib/site";
+import { absoluteUrl, chiclayoLanding, services } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: absoluteUrl(chiclayoLanding.path),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     ...services.map((service) => ({
       url: absoluteUrl(`/servicios/${service.slug}`),

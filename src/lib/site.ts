@@ -42,7 +42,7 @@ export const site = {
   headline: "Convierte tus ideas en productos digitales.",
   headlineAccent: "productos digitales.",
   proposition:
-    "Desarrollo web, apps, automatizaciones y asesorías tecnológicas para negocios en Chiclayo y todo el Perú.",
+    "Desarrollo web, apps, automatizaciones y asesorías tecnológicas para negocios de todo el Perú.",
   heroLead:
     "Te acompaño desde la idea hasta el producto publicado: con alcance claro, cotización formal y desarrollo a medida.",
   description:
@@ -70,6 +70,9 @@ export const site = {
     "desarrollo web Chiclayo",
     "diseño de páginas web Chiclayo",
     "desarrollo de software Chiclayo",
+    "sistemas Chiclayo",
+    "sistemas a medida Chiclayo",
+    "empresa de software Chiclayo",
     "programador Chiclayo",
     "empresa de desarrollo web Chiclayo",
     "landing page Chiclayo",
@@ -89,7 +92,7 @@ export const site = {
     { href: "/#contacto", label: "Contacto" },
   ],
   cta: "Ver servicios",
-  heroEyebrow: "CODEXIA · Software a medida en Chiclayo, Perú",
+  heroEyebrow: "CODEXIA · Software a medida para todo el Perú",
   assurances: [
     "Cotización formal y contrato",
     "Plazos y alcance definidos",
@@ -255,6 +258,7 @@ export const services = [
         "desarrollo de software Chiclayo",
         "desarrollo de aplicaciones Chiclayo",
         "sistemas web Chiclayo",
+        "sistemas a medida Chiclayo",
         "programador Chiclayo",
         "software a medida Perú",
         "desarrollo de apps Perú",
@@ -340,6 +344,95 @@ export const services = [
       "Hola CODEXIA 👋 Necesito una asesoría tecnológica para mi negocio y me gustaría coordinar una conversación.",
   },
 ] as const;
+
+/** Landing local: búsquedas "desarrollo de software en Chiclayo", "sistemas Chiclayo". */
+export const chiclayoLanding = {
+  path: "/desarrollo-de-software-chiclayo",
+  title: "Desarrollo de Software y Sistemas a Medida en Chiclayo",
+  description:
+    "Desarrollo de software en Chiclayo: sistemas a medida, aplicaciones web y automatizaciones para negocios de Lambayeque y todo el Perú. Cotización formal.",
+  h1: "Desarrollo de software y sistemas a medida en Chiclayo",
+  intro:
+    "CODEXIA desarrolla sistemas para negocios de Chiclayo y Lambayeque: software hecho alrededor de tu operación, no plantillas genéricas. Del análisis al despliegue, con un solo interlocutor y cotización formal.",
+  message:
+    "Hola CODEXIA 👋 Necesito desarrollar un sistema para mi negocio en Chiclayo y me gustaría recibir más información.",
+  keywords: [
+    "desarrollo de software Chiclayo",
+    "sistemas Chiclayo",
+    "sistemas a medida Chiclayo",
+    "desarrollo de sistemas Chiclayo",
+    "empresa de software Chiclayo",
+    "software a medida Chiclayo",
+    "programador Chiclayo",
+    "desarrollo de software Lambayeque",
+    "sistemas Lambayeque",
+  ],
+  // Tipos de sistema respaldados por proyectos del portafolio
+  systems: [
+    {
+      title: "Sistemas de gestión e inventario",
+      description: "Productos, almacenes, compras, ventas y kardex en un solo lugar.",
+      serviceId: "apps",
+    },
+    {
+      title: "Sistemas contables y administrativos",
+      description: "Plataformas para estudios contables y áreas administrativas, alineadas a la normativa SUNAT.",
+      serviceId: "apps",
+    },
+    {
+      title: "Sistemas de reservas",
+      description: "Agenda de espacios, citas o recursos, con reglas de disponibilidad y capacidad.",
+      serviceId: "apps",
+    },
+    {
+      title: "Paneles y gestión interna",
+      description: "Paneles administrativos, roles de usuario y gestión de equipos, clientes o socios.",
+      serviceId: "apps",
+    },
+    {
+      title: "Aplicaciones web a medida",
+      description: "Productos digitales propios para operar o vender, en web y en móvil.",
+      serviceId: "apps",
+    },
+    {
+      title: "Integraciones y automatizaciones",
+      description: "Conecto tus sistemas entre sí y automatizo las tareas repetitivas.",
+      serviceId: "automatizaciones",
+    },
+  ],
+  localPoints: [
+    "Reuniones presenciales en Chiclayo o por videollamada",
+    "Trato directo con quien diseña y desarrolla",
+    "Cotización formal, contrato y plazos definidos",
+  ],
+  faqs: [
+    {
+      question: "¿Desarrollas sistemas a medida para empresas de Chiclayo?",
+      answer:
+        "Sí. CODEXIA está en Chiclayo y desarrolla sistemas a medida para negocios de la ciudad y de Lambayeque: gestión e inventario, ventas, reservas, paneles administrativos e integraciones.",
+    },
+    {
+      question: "¿Cuánto cuesta desarrollar un sistema en Chiclayo?",
+      answer:
+        "Depende del alcance: módulos, usuarios, integraciones y volumen de información. Después de una primera conversación recibes una cotización formal con alcance, plazos e inversión definidos, antes de empezar.",
+    },
+    {
+      question: "¿Podemos reunirnos en persona?",
+      answer:
+        "Sí. Las reuniones pueden ser presenciales en Chiclayo o por videollamada, según te acomode; el seguimiento del proyecto es el mismo.",
+    },
+    {
+      question: "¿Con qué tecnologías desarrollas los sistemas?",
+      answer:
+        "Next.js, React y Angular en el frontend; Laravel (PHP) y Spring Boot (Java) en el backend; MySQL y Redis para datos. El stack se elige según lo que necesita cada sistema.",
+    },
+    {
+      question: "¿También atiendes a negocios fuera de Chiclayo?",
+      answer:
+        "Sí. Además de Chiclayo y Lambayeque, desarrollo proyectos para negocios de todo el Perú de forma remota.",
+    },
+  ],
+} as const;
 
 export const differentiators = [
   {
