@@ -25,17 +25,16 @@ export function Logo({
     <span className={cn("inline-flex items-center gap-2.5 leading-none sm:gap-3", className)}>
       <span
         className={cn(
-          "relative inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-black",
+          "relative inline-flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
           markClassName,
         )}
       >
         <Image
-          src="/brand/codexia-mark.jpg"
+          src="/brand/codexia-mark.png"
           alt=""
           width={size * 2}
           height={size * 2}
-          // El círculo del logo ocupa ~76% de la imagen: se amplía para que su anillo sea el borde
-          className="h-full w-full scale-[1.31] object-cover object-center"
+          className="h-full w-full object-cover"
           priority={priority}
         />
       </span>

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   category: "technology",
   // El canonical lo define cada página (home y servicios)
-  // Íconos: los generan las convenciones app/icon.tsx y app/apple-icon.png
+  // Íconos: los generan las convenciones app/icon.png y app/apple-icon.tsx
   openGraph: {
     type: "website",
     locale: site.locale,
