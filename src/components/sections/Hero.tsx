@@ -13,15 +13,15 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-page pt-28 text-fg sm:pt-32 lg:pt-36 laptop:pt-24"
+      className="hero-blue on-blue relative overflow-hidden bg-page pt-28 text-fg sm:pt-32 lg:pt-36 laptop:pt-24"
     >
-      {/* Fondo: aurora animada + puntos + cuadrícula */}
+      {/* Fondo: aurora animada + cuadrícula + puntos (en modo claro, sobre azul) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="aurora aurora-1 -top-32 right-[-8%] h-[26rem] w-[26rem] sm:h-[34rem] sm:w-[34rem]" />
         <div className="aurora aurora-2 top-40 right-[22%] h-[18rem] w-[18rem] sm:h-[24rem] sm:w-[24rem]" />
         <div className="aurora aurora-3 -left-24 top-24 h-[16rem] w-[16rem] sm:h-[22rem] sm:w-[22rem]" />
+        <div className="bg-grid-dark mask-radial absolute inset-0" />
         <div className="bg-dots mask-radial absolute inset-0 opacity-60" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-page" />
       </div>
 
       <Container className="relative grid items-center gap-14 pb-14 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-20 laptop:pb-8">
@@ -64,7 +64,7 @@ export function Hero() {
           >
             {site.assurances.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm text-fg-muted">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-violet text-white">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-fg ring-1 ring-accent-ring">
                   <IconCheck className="h-3 w-3" />
                 </span>
                 {item}
@@ -74,7 +74,7 @@ export function Hero() {
         </div>
 
         <div
-          className="animate-rise relative mx-auto w-full max-w-md lg:max-w-none"
+          className="on-light animate-rise relative mx-auto w-full max-w-md lg:max-w-none"
           style={{ animationDelay: "180ms" }}
         >
           <div className="float-slow">

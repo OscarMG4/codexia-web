@@ -63,7 +63,7 @@ export function ProjectOverview() {
               <span
                 className={cn(
                   "flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
-                  phase.status === "done" && "bg-gradient-to-br from-brand-500 to-violet text-white",
+                  phase.status === "done" && "bg-gradient-to-br from-brand-500 to-azure text-white",
                   phase.status === "active" &&
                     "border-2 border-brand-600 bg-surface",
                   phase.status === "pending" && "border border-line-strong",
@@ -99,7 +99,7 @@ export function ProjectOverview() {
 
       <div className="px-5 pb-5 sm:px-6">
         <div className="h-1.5 overflow-hidden rounded-full bg-line">
-          <div className="beam h-full w-[68%] rounded-full bg-gradient-to-r from-brand-500 via-violet to-cyan" />
+          <div className="beam h-full w-[68%] rounded-full bg-gradient-to-r from-brand-500 via-azure to-cyan" />
         </div>
       </div>
 

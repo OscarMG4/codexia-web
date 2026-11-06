@@ -24,17 +24,17 @@ export default async function OpenGraphImage() {
           justifyContent: "center",
           gap: 28,
           background:
-            "radial-gradient(900px 480px at 50% 10%, rgba(79,75,219,0.32), transparent 60%), #0A1326",
+            "radial-gradient(900px 480px at 50% 10%, rgba(27, 116, 207,0.32), transparent 60%), #0A1326",
           color: "#F8FAFC",
         }}
       >
         <div
           style={{
-            width: 220,
-            height: 220,
-            borderRadius: 32,
+            width: 260,
+            height: 260,
+            borderRadius: "50%",
             overflow: "hidden",
-            border: "2px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 0 80px rgba(89, 181, 244, 0.35)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -44,13 +44,14 @@ export default async function OpenGraphImage() {
           <img
             src={logoSrc}
             alt="CODEXIA"
-            width={220}
-            height={220}
+            width={260}
+            height={260}
             style={{
-              width: 220,
-              height: 220,
+              width: 260,
+              height: 260,
               objectFit: "cover",
-              transform: "scale(1.35)",
+              // El círculo del logo ocupa ~76% de la imagen: su anillo queda como borde
+              transform: "scale(1.31)",
             }}
           />
         </div>
@@ -75,7 +76,7 @@ export default async function OpenGraphImage() {
           <div
             style={{
               fontSize: 20,
-              color: "#A3A9FB",
+              color: "#8ed0fa",
               letterSpacing: 6,
               textTransform: "uppercase",
             }}

@@ -97,10 +97,11 @@ export default async function ServicePage({
 
       <main id="contenido">
         {/* Hero del servicio */}
-        <section className="relative overflow-hidden bg-page pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
+        <section className="hero-blue on-blue relative overflow-hidden bg-page pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             <div className="aurora aurora-1 -top-32 right-[-8%] h-[24rem] w-[24rem] sm:h-[30rem] sm:w-[30rem]" />
             <div className="aurora aurora-3 top-24 -left-24 h-[16rem] w-[16rem]" />
+            <div className="bg-grid-dark mask-radial absolute inset-0" />
             <div className="bg-dots mask-radial absolute inset-0 opacity-50" />
           </div>
 
@@ -191,7 +192,7 @@ export default async function ServicePage({
                 <li key={item}>
                   <Reveal delay={(index % 3) * 80} className="h-full">
                     <div className="spotlight flex h-full items-start gap-4 rounded-2xl border border-line bg-surface p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-violet text-white">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-azure text-white">
                         <IconCheck className="h-4 w-4" />
                       </span>
                       <p className="pt-1.5 font-medium text-fg">{item}</p>

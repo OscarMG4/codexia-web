@@ -425,7 +425,7 @@ export const projects = [
     url: "https://dlcperu.com.pe/",
     urlLabel: "dlcperu.com.pe",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    accent: "violet" as const,
+    accent: "blue" as const,
     image: "/projects/project-dlc.png",
   },
   {

@@ -67,7 +67,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="glow-border rounded-2xl border border-line bg-surface p-6 shadow-[0_24px_60px_-24px_rgba(79,75,219,0.3)] sm:p-8">
+            <div className="glow-border rounded-2xl border border-line bg-surface p-6 shadow-[0_24px_60px_-24px_rgba(27, 116, 207,0.3)] sm:p-8">
               <p className="font-display text-xl font-bold text-fg">
                 Solicita información
               </p>

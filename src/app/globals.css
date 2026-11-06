@@ -27,10 +27,10 @@
   --color-fg-subtle: #64748b;
 
   /* Estados y acentos semánticos (cambian con el tema) */
-  --color-accent-soft: #eef0ff;
-  --color-accent-ring: #d6daff;
-  --color-accent-border: #a3a9fb;
-  --color-accent-fg: #423cbf;
+  --color-accent-soft: #eef4ff;
+  --color-accent-ring: #d3e0fe;
+  --color-accent-border: #93b2fd;
+  --color-accent-fg: #1d41c9;
   --color-success-soft: #ecfdf5;
   --color-success-ring: #a7f3d0;
   --color-success-fg: #047857;
@@ -45,25 +45,38 @@
   --color-navy-700: #18284a;
   --color-navy-600: #24365e;
 
-  /* Marca: índigo tomado del isotipo */
-  --color-brand-50: #eef0ff;
-  --color-brand-100: #e0e3ff;
-  --color-brand-200: #c5caff;
-  --color-brand-300: #a3a9fb;
-  --color-brand-400: #8187f4;
-  --color-brand-500: #6366ea;
-  --color-brand-600: #4f4bdb;
-  --color-brand-700: #423cbf;
-  --color-brand-800: #36319c;
+  /* Marca (modo claro): azul royal del banner; el modo oscuro usa la escala celeste */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe6fe;
+  --color-brand-200: #bfd3fe;
+  --color-brand-300: #93b2fd;
+  --color-brand-400: #6090fa;
+  --color-brand-500: #3b6ef5;
+  --color-brand-600: #2552e6;
+  --color-brand-700: #1d41c9;
+  --color-brand-800: #1e379f;
 
   /* Acentos para degradados tecnológicos */
-  --color-violet: #8b5cf6;
+  --color-azure: #38a5f8;
   --color-cyan: #06b6d4;
 }
 
 /* Modo oscuro: solo se redefinen los tokens; los componentes no cambian */
 :root[data-theme="dark"] {
   color-scheme: dark;
+
+  /* Escala celeste del isotipo (el modo oscuro queda como estaba) */
+  --color-brand-50: #eef8ff;
+  --color-brand-100: #d9efff;
+  --color-brand-200: #bce3fd;
+  --color-brand-300: #8ed0fa;
+  --color-brand-400: #59b5f4;
+  --color-brand-500: #3399ea;
+  --color-brand-600: #1b74cf;
+  --color-brand-700: #1a62ad;
+  --color-brand-800: #1b528c;
+  --color-azure: #2f6fe4;
+
   --color-page: #0a1020;
   --color-page-alt: #0d1428;
   --color-surface: #121a30;
@@ -74,10 +87,10 @@
   --color-fg-muted: #a6b0c4;
   --color-fg-subtle: #7d889f;
 
-  --color-accent-soft: rgba(99, 102, 234, 0.14);
-  --color-accent-ring: rgba(129, 135, 244, 0.3);
-  --color-accent-border: rgba(129, 135, 244, 0.55);
-  --color-accent-fg: #a9aefc;
+  --color-accent-soft: rgba(51, 153, 234, 0.14);
+  --color-accent-ring: rgba(89, 181, 244, 0.3);
+  --color-accent-border: rgba(89, 181, 244, 0.55);
+  --color-accent-fg: #8ed0fa;
   --color-success-soft: rgba(16, 185, 129, 0.12);
   --color-success-ring: rgba(52, 211, 153, 0.3);
   --color-success-fg: #6ee7b7;
@@ -93,7 +106,7 @@
 }
 
 :root[data-theme="dark"] .bg-dots {
-  background-image: radial-gradient(rgba(129, 135, 244, 0.28) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(89, 181, 244, 0.28) 1px, transparent 1px);
 }
 
 /* Las auroras se ven más fuertes sobre oscuro: se atenúan un poco */
@@ -123,7 +136,7 @@ body {
 }
 
 ::selection {
-  background: rgba(99, 102, 234, 0.22);
+  background: rgba(51, 153, 234, 0.22);
 }
 
 :focus-visible {
@@ -161,7 +174,7 @@ body {
 
 /* Puntos para el hero */
 .bg-dots {
-  background-image: radial-gradient(rgba(79, 75, 219, 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(27, 116, 207, 0.22) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -169,7 +182,7 @@ body {
 
 /* Texto con degradado (estático: animarlo repinta el título en cada frame) */
 .text-gradient {
-  background: linear-gradient(90deg, var(--color-brand-600), var(--color-violet) 55%, var(--color-cyan));
+  background: linear-gradient(90deg, var(--color-brand-600), var(--color-azure) 55%, var(--color-cyan));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -193,7 +206,7 @@ body {
 }
 
 .aurora-2 {
-  background: radial-gradient(circle, var(--color-violet) 0%, transparent 68%);
+  background: radial-gradient(circle, var(--color-azure) 0%, transparent 68%);
   opacity: 0.4;
   animation: aurora-b 22s ease-in-out infinite;
 }
@@ -263,7 +276,7 @@ body {
     from var(--angle),
     transparent 0deg,
     var(--color-brand-500) 60deg,
-    var(--color-violet) 120deg,
+    var(--color-azure) 120deg,
     var(--color-cyan) 180deg,
     transparent 240deg
   );
@@ -285,7 +298,7 @@ body {
   inset: -12%;
   z-index: -2;
   border-radius: inherit;
-  background: radial-gradient(closest-side, rgba(124, 92, 246, 0.35), transparent);
+  background: radial-gradient(closest-side, rgba(47, 111, 228, 0.35), transparent);
   opacity: 0.8;
 }
 
@@ -311,7 +324,7 @@ body {
   opacity: 0;
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(99, 102, 234, 0.1),
+    rgba(51, 153, 234, 0.1),
     transparent 45%
   );
   transition: opacity 0.3s ease;
@@ -329,7 +342,7 @@ body {
   background: radial-gradient(
     300px circle at var(--mx, 50%) var(--my, 50%),
     var(--color-brand-500),
-    var(--color-violet) 30%,
+    var(--color-azure) 30%,
     transparent 60%
   );
   mask:
@@ -348,7 +361,7 @@ body {
 .spotlight-dark::before {
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(129, 135, 244, 0.16),
+    rgba(89, 181, 244, 0.16),
     transparent 45%
   );
 }
@@ -357,10 +370,10 @@ body {
 .btn-gradient {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(110deg, var(--color-brand-600), var(--color-violet) 60%, var(--color-brand-500));
+  background: linear-gradient(110deg, var(--color-brand-600), var(--color-azure) 60%, var(--color-brand-500));
   background-size: 200% 100%;
   box-shadow:
-    0 8px 24px -8px rgba(79, 75, 219, 0.55),
+    0 8px 24px -8px rgba(27, 116, 207, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition:
     background-position 0.5s ease,
@@ -371,7 +384,7 @@ body {
 .btn-gradient:hover {
   background-position: 100% 0;
   box-shadow:
-    0 12px 32px -8px rgba(124, 92, 246, 0.6),
+    0 12px 32px -8px rgba(47, 111, 228, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
 }
@@ -465,7 +478,7 @@ body {
   inset-block: 0;
   left: 0;
   width: 30%;
-  background: linear-gradient(90deg, transparent, var(--color-cyan), var(--color-violet), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-cyan), var(--color-azure), transparent);
   animation: beam-x 3.5s ease-in-out infinite;
 }
 
@@ -481,7 +494,7 @@ body {
 /* Barra de progreso de scroll */
 .scroll-progress {
   transform-origin: left center;
-  background: linear-gradient(90deg, var(--color-brand-500), var(--color-violet), var(--color-cyan));
+  background: linear-gradient(90deg, var(--color-brand-500), var(--color-azure), var(--color-cyan));
 }
 
 /* ---------- Motion (sutil) ---------- */
@@ -703,4 +716,65 @@ body {
 
 .whatsapp-dot:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+/*
+ * Hero azul en modo claro (como el banner de la marca). Dentro de `.on-blue` los
+ * tokens semánticos pasan a versiones blancas, así los componentes no cambian;
+ * `.on-light` restaura los tokens claros (tarjetas blancas dentro del hero).
+ * En modo oscuro nada de esto aplica.
+ */
+:root:not([data-theme="dark"]) .hero-blue {
+  background:
+    radial-gradient(900px 520px at 85% -10%, rgba(125, 211, 252, 0.35), transparent 60%),
+    linear-gradient(160deg, #2f6bf3 0%, #2050e3 45%, #1636b4 100%);
+}
+
+:root:not([data-theme="dark"]) .on-blue {
+  --color-fg: #ffffff;
+  --color-fg-muted: rgba(255, 255, 255, 0.86);
+  --color-fg-subtle: rgba(255, 255, 255, 0.72);
+  --color-surface: rgba(255, 255, 255, 0.12);
+  --color-surface-muted: rgba(255, 255, 255, 0.08);
+  --color-line: rgba(255, 255, 255, 0.22);
+  --color-line-strong: rgba(255, 255, 255, 0.38);
+  --color-accent-soft: rgba(255, 255, 255, 0.18);
+  --color-accent-ring: rgba(255, 255, 255, 0.35);
+  --color-accent-border: rgba(255, 255, 255, 0.6);
+  --color-accent-fg: #ffffff;
+}
+
+:root:not([data-theme="dark"]) .on-blue .on-light {
+  --color-fg: #0f172a;
+  --color-fg-muted: #475569;
+  --color-fg-subtle: #64748b;
+  --color-surface: #fcfcfd;
+  --color-surface-muted: #f1f3f7;
+  --color-line: #dfe3ea;
+  --color-line-strong: #c8ced9;
+  --color-accent-soft: #eef4ff;
+  --color-accent-ring: #d3e0fe;
+  --color-accent-border: #93b2fd;
+  --color-accent-fg: #1d41c9;
+}
+
+/* Sobre el azul, la acción principal es blanca con texto azul (como el banner) */
+:root:not([data-theme="dark"]) .on-blue .btn-gradient {
+  background: #ffffff;
+  color: var(--color-brand-700);
+  box-shadow: 0 12px 30px -12px rgba(8, 25, 80, 0.55);
+}
+
+:root:not([data-theme="dark"]) .on-blue .btn-gradient:hover {
+  background: #eef4ff;
+}
+
+:root:not([data-theme="dark"]) .on-blue .text-gradient {
+  background: linear-gradient(90deg, #a7e1ff, #6fd0ff 55%, #c4f1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:root:not([data-theme="dark"]) .on-blue .bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px);
 }

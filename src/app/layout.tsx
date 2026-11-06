@@ -40,10 +40,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   category: "technology",
   // El canonical lo define cada página (home y servicios)
-  icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
-  },
+  // Íconos: los generan las convenciones app/icon.tsx y app/apple-icon.png
   openGraph: {
     type: "website",
     locale: site.locale,
@@ -85,10 +82,8 @@ export const metadata: Metadata = {
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f5f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a1020" },
-  ],
+  // Modo claro por defecto: la barra del navegador toma el azul del hero
+  themeColor: "#2f6bf3",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
