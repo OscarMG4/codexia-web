@@ -2,7 +2,7 @@ import { Logo } from "@/components/brand/Logo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { IconMail, IconWhatsApp } from "@/components/icons/Icons";
 import { Container } from "@/components/ui/Container";
-import { location, services, site } from "@/lib/site";
+import { chiclayoLanding, location, services, site } from "@/lib/site";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 export function Footer() {
@@ -50,6 +50,11 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={chiclayoLanding.path} className="transition-colors hover:text-white">
+                  Software en {location.city}
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -1,5 +1,6 @@
 import {
   absoluteUrl,
+  chiclayoLanding,
   location,
   services,
   site,
@@ -161,5 +162,32 @@ export function breadcrumbSchema(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+/** Servicio local para la landing de Chiclayo (búsquedas "software/sistemas en Chiclayo"). */
+export function chiclayoServiceSchema(): Record<string, unknown> {
+  const url = absoluteUrl(chiclayoLanding.path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: chiclayoLanding.title,
+    serviceType: "Desarrollo de software a medida",
+    description: chiclayoLanding.description,
+    url,
+    provider: { "@id": organizationId },
+    areaServed: [
+      { "@type": "City", name: location.city },
+      { "@type": "AdministrativeArea", name: location.region },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Sistemas a medida en Chiclayo",
+      itemListElement: chiclayoLanding.systems.map((system) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: system.title, description: system.description },
+      })),
+    },
   };
 }

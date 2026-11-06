@@ -1,5 +1,6 @@
 import {
   absoluteUrl,
+  chiclayoLanding,
   homeFaqs,
   location,
   portfolio,
@@ -20,6 +21,8 @@ export function GET() {
     `Ubicación: ${location.city}, ${location.region}, ${location.countryName}. Atiende a negocios de todo el Perú.`,
     `Contacto: ${site.email} · WhatsApp ${site.phoneDisplay}`,
     `Redes: ${site.social.map((profile) => `${profile.label} ${profile.url}`).join(" · ")}`,
+    "",
+    `Desarrollo de software en ${location.city}: [${chiclayoLanding.title}](${absoluteUrl(chiclayoLanding.path)})`,
     "",
     "## Servicios",
     ...services.map(
