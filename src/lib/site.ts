@@ -92,7 +92,9 @@ export const site = {
   ],
   avatar: "/brand/oscar-avatar.jpg",
   logo: "/brand/codexia-mark.png",
-  ogImage: "/opengraph-image",
+  // Cambia la versión al renovar la imagen para compartir: WhatsApp, Facebook y
+  // LinkedIn guardan en caché la URL de la imagen y solo la renuevan si cambia
+  ogImage: "/opengraph-image?v=2026-11-06",
 } as const;
 
 /** id del ancla de una entrada de navegación ("/#servicios" → "servicios"). */
