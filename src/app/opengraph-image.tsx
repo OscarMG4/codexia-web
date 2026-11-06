@@ -50,8 +50,6 @@ export default async function OpenGraphImage() {
               width: 260,
               height: 260,
               objectFit: "cover",
-              // El círculo del logo ocupa ~76% de la imagen: su anillo queda como borde
-              transform: "scale(1.31)",
             }}
           />
         </div>
