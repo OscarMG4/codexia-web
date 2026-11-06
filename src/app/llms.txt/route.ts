@@ -19,6 +19,7 @@ export function GET() {
     "",
     `Ubicación: ${location.city}, ${location.region}, ${location.countryName}. Atiende a negocios de todo el Perú.`,
     `Contacto: ${site.email} · WhatsApp ${site.phoneDisplay}`,
+    `Redes: ${site.social.map((profile) => `${profile.label} ${profile.url}`).join(" · ")}`,
     "",
     "## Servicios",
     ...services.map(

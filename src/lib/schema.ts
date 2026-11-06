@@ -66,7 +66,7 @@ export function organizationSchema(): Record<string, unknown> {
       areaServed: location.country,
       availableLanguage: ["Spanish"],
     },
-    sameAs: [site.github],
+    sameAs: [...site.social.map((profile) => profile.url), site.github],
     knowsAbout: [...techStack, ...services.map((service) => service.name)],
     hasOfferCatalog: {
       "@type": "OfferCatalog",

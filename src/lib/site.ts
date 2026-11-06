@@ -54,6 +54,11 @@ export const site = {
   phoneDisplay: "+51 981 474 747",
   phoneE164: "+51981474747",
   github: "https://github.com/OscarMG4",
+  social: [
+    { id: "facebook", label: "Facebook", url: "https://www.facebook.com/profile.php?id=61596194792050" },
+    { id: "instagram", label: "Instagram", url: "https://www.instagram.com/codexia.pe/" },
+    { id: "tiktok", label: "TikTok", url: "https://www.tiktok.com/@codexia.pe" },
+  ],
   founder: "Oscar Muñoz",
   whatsapp: {
     number: "51981474747",
