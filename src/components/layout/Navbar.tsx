@@ -75,7 +75,8 @@ export function Navbar() {
           "relative border-b transition-[background-color,border-color,box-shadow] duration-300",
           solid
             ? "border-line bg-page/90 shadow-[0_1px_12px_rgba(15,23,42,0.06)] backdrop-blur-md"
-            : "border-transparent bg-transparent",
+            : // Sobre el hero azul: textos en blanco (en modo claro, vía .on-blue)
+              "on-blue border-transparent bg-transparent",
         )}
       >
         <span
@@ -90,7 +91,7 @@ export function Navbar() {
             className="flex min-w-0 shrink items-center"
             aria-label="CODEXIA, ir al inicio"
           >
-            <Logo size={36} priority />
+            <Logo size={44} markClassName="lg:h-11 lg:w-11" priority />
           </Link>
 
           <nav aria-label="Principal" className="hidden lg:block">

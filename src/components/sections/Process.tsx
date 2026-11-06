@@ -52,7 +52,7 @@ export function Process() {
                     )}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="bg-gradient-to-br from-brand-300 via-violet to-cyan bg-clip-text font-display text-4xl font-extrabold text-transparent">
+                      <span className="bg-gradient-to-br from-brand-300 via-azure to-cyan bg-clip-text font-display text-4xl font-extrabold text-transparent">
                         {step.number}
                       </span>
                       {isHighlight ? (
