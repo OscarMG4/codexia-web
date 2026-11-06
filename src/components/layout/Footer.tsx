@@ -1,4 +1,5 @@
 import { Logo } from "@/components/brand/Logo";
+import { SocialLinks } from "@/components/brand/SocialLinks";
 import { IconMail, IconWhatsApp } from "@/components/icons/Icons";
 import { Container } from "@/components/ui/Container";
 import { location, services, site } from "@/lib/site";
@@ -14,6 +15,10 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed">
               {site.proposition}
             </p>
+            <SocialLinks
+              className="mt-5"
+              itemClassName="border-white/10 text-slate-400 hover:border-white/30 hover:bg-white/5 hover:text-white"
+            />
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
               {site.tagline}
             </p>

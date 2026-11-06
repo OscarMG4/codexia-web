@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/brand/SocialLinks";
 import { LazyContactForm } from "@/components/forms/LazyContactForm";
 import { IconMail, IconWhatsApp } from "@/components/icons/Icons";
 import { Container } from "@/components/ui/Container";
@@ -64,10 +65,20 @@ export function Contact() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-fg-subtle">
+                Sígueme en redes
+              </p>
+              <SocialLinks
+                className="mt-3"
+                itemClassName="h-11 w-11 border-line bg-surface text-fg-muted hover:border-accent-border hover:text-accent-fg"
+              />
+            </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="glow-border rounded-2xl border border-line bg-surface p-6 shadow-[0_24px_60px_-24px_rgba(27, 116, 207,0.3)] sm:p-8">
+            <div className="glow-border rounded-2xl border border-line bg-surface p-6 shadow-[0_24px_60px_-24px_rgba(27,116,207,0.3)] sm:p-8">
               <p className="font-display text-xl font-bold text-fg">
                 Solicita información
               </p>
